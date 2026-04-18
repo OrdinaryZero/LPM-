@@ -12,39 +12,15 @@
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
-    <nav id="mainNav" class="fixed top-0 left-0 w-full z-[100] py-5 px-6 md:px-10 lg:px-12 flex justify-between items-center text-white transition-all duration-300">
-        <div class="flex items-center gap-5 lg:gap-8">
-            <a href="{{ route('beranda') }}">
-                <img src="{{ asset('images/logort.png') }}" alt="Logo RT" class="h-10 md:h-[42px] w-auto drop-shadow-md hover:scale-105 transition-transform">
-            </a>
-
-            <div class="hidden lg:flex items-center gap-5 text-[15px] tracking-wide">
-                <a href="{{ route('beranda') }}" class="font-extrabold text-[17px] drop-shadow-sm">Beranda</a>
-                
-                <a href="#" class="flex items-center gap-1 hover:text-white/80 transition cursor-pointer font-medium">
-                    Profil
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                    </svg>
-                </a>
-                
-                <a href="{{ route('beranda') }}" class="hover:text-white/80 transition font-medium">Acara</a>
-                <a href="{{ route('beranda') }}" class="hover:text-white/80 transition font-medium">Lokasi</a>
-                <a href="{{ route('beranda') }}" class="hover:text-white/80 transition font-medium">Informasi</a>
-                <a href="{{ route('beranda') }}" class="hover:text-white/80 transition font-medium">Galeri</a>
-                
-                <a href="#" class="hover:text-white/80 transition font-medium">
-                    <span class="text-[#ef4444] font-bold drop-shadow-sm">Live</span> Report
-                </a>
+    <nav class="absolute top-0 left-0 w-full z-50 py-6 px-6 md:px-12 flex justify-between items-center text-white">
+        <div class="flex items-center gap-8">
+            <a href="{{ route('beranda') }}"><img src="{{ asset('images/logort.png') }}" class="h-10 hover:scale-105 transition-transform"></a>
+            <div class="hidden lg:flex gap-6 font-semibold tracking-wide">
+                <a href="{{ route('beranda') }}" class="hover:opacity-80 transition-opacity">Beranda</a>
+                <span class="border-b-2 border-white pb-1">Status Laporan</span>
             </div>
         </div>
-
-            <a href="{{ route('beranda') }}" class="text-sm bg-white/20 hover:bg-white/30 px-5 py-2 rounded-full transition-colors flex items-center gap-2 font-medium">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                </svg>
-                Kembali
-            </a>
+        <a href="{{ route('beranda') }}" class="bg-white/20 hover:bg-white/30 px-5 py-2 rounded-full text-sm font-bold transition-colors">Kembali</a>
     </nav>
 
     <section class="relative bg-gradient-to-r from-[#c09015] via-[#d4a017] to-[#fcd34d] pt-32 pb-40 px-4 text-center z-10 overflow-hidden">

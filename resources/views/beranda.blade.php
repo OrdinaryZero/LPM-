@@ -58,10 +58,10 @@
             <div class="hidden lg:flex items-center gap-5 text-[15px] tracking-wide">
                 <a href="#" class="font-extrabold text-[17px] drop-shadow-sm">Beranda</a>
                 <a href="#profil" class="flex items-center gap-1 hover:text-[#d4a017] transition cursor-pointer font-medium">Profil</a>
-                <a href="#acara" class="hover:text-[#d4a017] transition font-medium">Agenda Siaga</a>
                 <a href="#lokasi" class="hover:text-[#d4a017] transition font-medium">Posko</a>
                 <a href="#informasi" class="hover:text-[#d4a017] transition font-medium">Info Darurat</a>
                 <a href="#galeri" class="hover:text-[#d4a017] transition font-medium">Dokumentasi</a>
+                <a href="{{ route('status') }}" class="hover:text-[#d4a017] transition font-medium">Status</a>
                 
                 <a href="{{ route('admin.login') }}" class="hover:text-white/80 transition font-medium flex items-center gap-1 bg-white/10 px-3 py-1.5 rounded-full border border-white/20">
                     <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
@@ -102,10 +102,10 @@
         <div class="flex flex-col text-gray-800 font-semibold">
             <a href="#" class="px-6 py-4 border-b hover:bg-gray-50">Home</a>
             <a href="#profil" class="px-6 py-4 border-b hover:bg-gray-50">Profil</a>
-            <a href="#acara" class="px-6 py-4 border-b hover:bg-gray-50">Agenda Siaga</a>
             <a href="#lokasi" class="px-6 py-4 border-b hover:bg-gray-50">Posko Utama</a>
             <a href="#informasi" class="px-6 py-4 border-b hover:bg-gray-50">Info Darurat</a>
             <a href="#galeri" class="px-6 py-4 border-b hover:bg-gray-50">Dokumentasi</a>
+            <a href="{{ route('status') }}" class="px-6 py-4 border-b hover:bg-gray-50">Status</a>
             <a href="{{ route('admin.login') }}" class="px-6 py-4 text-red-600 font-bold flex items-center gap-2">
                 <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
                 Command Center  
@@ -148,56 +148,52 @@
         </div>
     </section>
 
-    <section class="bg-white -mt-10 md:-mt-40 relative z-40 pb-16 px-4">
+<section class="bg-white -mt-10 md:-mt-40 relative z-40 pb-16 px-4">
         <div class="max-w-5xl mx-auto bg-white rounded-[40px] shadow-[0_15px_50px_rgba(0,0,0,0.05)] border border-gray-100 p-8 md:p-12">
 
-            <div class="flex flex-col md:flex-row justify-center items-center gap-6 md:gap-10 mb-12 fade-up reveal">
-                
-                <a href="{{ route('surat.index') }}" class="w-full md:w-[420px] bg-white p-6 rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-gray-100 flex items-center gap-5 hover:shadow-[0_20px_50px_rgba(220,38,38,0.1)] hover:border-red-100 hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-16 h-16 rounded-[20px] bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+            <div class="flex justify-center mb-12 fade-up reveal">
+                <a href="{{ route('lapor.index') }}" class="w-full max-w-2xl bg-white p-6 md:p-8 rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex items-center gap-6 hover:shadow-[0_20px_50px_rgba(220,38,38,0.15)] hover:border-red-100 hover:-translate-y-2 transition-all duration-300 group">
+                    <div class="w-20 h-20 rounded-[24px] bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
                     </div>
                     <div class="text-left">
-                        <h3 class="text-xl font-extrabold text-gray-900 mb-1 group-hover:text-red-600 transition-colors duration-300">Ambulance Darurat</h3>
-                        <p class="text-sm font-medium text-gray-500 line-clamp-1">Layanan medis & evakuasi 24 Jam</p>
+                        <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">Panggilan Darurat</h3>
+                        <p class="text-sm md:text-base font-medium text-gray-500 leading-snug">Layanan terpadu evakuasi medis (Ambulance), rescue, dan pelaporan insiden 24 Jam.</p>
                     </div>
                 </a>
-
-                <a href="{{ route('lapor.index') }}" class="w-full md:w-[420px] bg-white p-6 rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.03)] border border-gray-100 flex items-center gap-5 hover:shadow-[0_20px_50px_rgba(212,160,23,0.1)] hover:border-[#f0e6d2] hover:-translate-y-1 transition-all duration-300 group">
-                    <div class="w-16 h-16 rounded-[20px] bg-[#fcf9f2] text-[#d4a017] flex items-center justify-center shrink-0 group-hover:bg-[#d4a017] group-hover:text-white transition-colors duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" /></svg>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="text-xl font-extrabold text-gray-900 mb-1 group-hover:text-[#d4a017] transition-colors duration-300">Laporan Rescue</h3>
-                        <p class="text-sm font-medium text-gray-500 line-clamp-1">Bantuan bencana & insiden darurat</p>
-                    </div>
-                </a>
-
             </div>
 
-            <div class="border-t border-gray-100 w-2/3 mx-auto mb-10 fade-up reveal"></div>
+            <div class="border-t border-gray-100 w-3/4 mx-auto mb-10 fade-up reveal"></div>
 
-            <div class="flex flex-wrap justify-center gap-8 md:gap-24 fade-up reveal delay-100">
+<div class="flex flex-wrap justify-center gap-8 md:gap-24 fade-up reveal delay-100">
                 
-                <a href="{{ route('warga.index') }}" class="flex flex-col items-center group cursor-pointer w-24 md:w-32">
-                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center shadow-[0_5px_20px_rgba(0,0,0,0.04)] mb-3 group-hover:-translate-y-2 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                <a href="{{ route('aspirasi.index') }}" class="flex flex-col items-center group cursor-pointer w-24 md:w-32">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center shadow-[0_5px_20px_rgba(0,0,0,0.04)] mb-3 group-hover:-translate-y-2 group-hover:border-blue-200 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                        </svg>
                     </div>
-                    <span class="text-xs md:text-sm font-bold text-gray-600 tracking-wide group-hover:text-[#d4a017] text-center">Data<br>Masyarakat</span>
+                    <span class="text-xs md:text-sm font-bold text-gray-600 tracking-wide group-hover:text-blue-600 text-center transition-colors">Aspirasi<br>Warga</span>
                 </a>
                 
-                <a href="{{ route('kas-rt.index') }}" class="flex flex-col items-center group cursor-pointer w-24 md:w-32">
-                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center shadow-[0_5px_20px_rgba(0,0,0,0.04)] mb-3 group-hover:-translate-y-2 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                <a href="{{ route('usulan.index') }}" class="flex flex-col items-center group cursor-pointer w-24 md:w-32">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center shadow-[0_5px_20px_rgba(0,0,0,0.04)] mb-3 group-hover:-translate-y-2 group-hover:border-[#d4a017] transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700 group-hover:text-[#d4a017] transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                        </svg>
                     </div>
-                    <span class="text-xs md:text-sm font-bold text-gray-600 tracking-wide group-hover:text-[#d4a017] text-center">Transparansi<br>Hibah</span>
+                    <span class="text-xs md:text-sm font-bold text-gray-600 tracking-wide group-hover:text-[#d4a017] text-center transition-colors">Usulan<br>Pembangunan</span>
                 </a>
                 
-                <a href="{{ route('umkm.index') }}" class="flex flex-col items-center group cursor-pointer w-24 md:w-32">
-                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center shadow-[0_5px_20px_rgba(0,0,0,0.04)] mb-3 group-hover:-translate-y-2 transition-all duration-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                <a href="{{ route('agenda.index') }}" class="flex flex-col items-center group cursor-pointer w-24 md:w-32">
+                    <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center shadow-[0_5px_20px_rgba(0,0,0,0.04)] mb-3 group-hover:-translate-y-2 group-hover:border-green-200 transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700 group-hover:text-green-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
                     </div>
-                    <span class="text-xs md:text-sm font-bold text-gray-600 tracking-wide group-hover:text-[#d4a017] text-center">UMKM<br>Binaan</span>
+                    <span class="text-xs md:text-sm font-bold text-gray-600 tracking-wide group-hover:text-green-600 text-center transition-colors">Agenda<br>Sosial</span>
                 </a>
 
             </div>

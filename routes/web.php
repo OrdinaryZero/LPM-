@@ -13,6 +13,9 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\GaleriController;
 use Carbon\Carbon;
 use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\AspirasiController;
+use App\Http\Controllers\UsulanController;
+use App\Http\Controllers\AgendaController;
 
 Route::get('/', function () {
     return view('beranda'); 
@@ -28,21 +31,35 @@ Route::get('/lapor', function () {
 })->name('lapor.index');
 
 
-Route::get('/data-warga', function () {
-    return view('data-warga');
-})->name('warga.index');
+Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
 
-Route::get('/kas-rt', function () {
-    return view('kas-rt');
-})->name('kas-rt.index');
-Route::get('/kas-rt', [\App\Http\Controllers\KasController::class, 'index'])->name('kas-rt.index');
+// JALUR PUBLIK (WARGA)
+Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
+Route::post('/aspirasi/kirim', [AspirasiController::class, 'store'])->name('aspirasi.store');
+// JALUR ADMIN PANEL
+Route::get('/admin/aspirasi', [AspirasiController::class, 'adminIndex'])->name('admin.aspirasi.index');
+Route::post('/admin/aspirasi/{id}/status', [AspirasiController::class, 'updateStatus'])->name('admin.aspirasi.status');
+
+Route::get('/usulan', [UsulanController::class, 'index'])->name('usulan.index');
+Route::get('/usulan', [UsulanController::class, 'index'])->name('usulan.index');
+Route::post('/usulan/kirim', [UsulanController::class, 'store'])->name('usulan.store');
+
+// JALUR ADMIN PANEL
+Route::get('/admin/usulan', [UsulanController::class, 'adminIndex'])->name('admin.usulan.index');
+Route::post('/admin/usulan/{id}/status', [UsulanController::class, 'updateStatus'])->name('admin.usulan.status');
+Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
+
+Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
+
+Route::get('/admin/agenda', [AgendaController::class, 'adminIndex'])->name('admin.agenda.index');
+Route::post('/admin/agenda', [AgendaController::class, 'store'])->name('admin.agenda.store');
+Route::post('/admin/agenda/{id}/status', [AgendaController::class, 'updateStatus'])->name('admin.agenda.status');
+Route::post('/admin/agenda/{id}/hapus', [AgendaController::class, 'destroy'])->name('admin.agenda.destroy');
+
 Route::get('/surat-pengantar', function () {
     return view('ambulance');
 })->name('ambulance.index');
 
-Route::get('/umkm', function () {
-    return view('umkm');
-})->name('umkm.index');
 
 Route::get('/profil', function () { return view('profil'); })->name('profil');
 Route::get('/acara', function () { return view('acara'); })->name('acara');
@@ -70,6 +87,8 @@ Route::post('/admin/galeri/tambah', [GaleriController::class, 'store'])->name('a
 Route::post('/admin/galeri/hapus/{id}', [GaleriController::class, 'destroy'])->name('admin.galeri.destroy');
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+
+Route::get('/status', [BerandaController::class, 'liveReport'])->name('status');
 
 // --- AREA ADMIN ---
 Route::get('/live-report', [AdminAuthController::class, 'showLogin'])->name('admin.login');

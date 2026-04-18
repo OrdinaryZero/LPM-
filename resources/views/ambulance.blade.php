@@ -18,7 +18,7 @@
             <a href="{{ route('beranda') }}"><img src="{{ asset('images/logort.png') }}" class="h-10 hover:scale-105 transition-transform"></a>
             <div class="hidden lg:flex gap-6 font-semibold tracking-wide">
                 <a href="{{ route('beranda') }}" class="hover:opacity-80 transition-opacity">Beranda</a>
-                <span class="border-b-2 border-white pb-1">Surat Permohonan</span>
+                <span class="border-b-2 border-white pb-1">Ambulance Darurat</span>
             </div>
         </div>
         <a href="{{ route('beranda') }}" class="bg-white/20 hover:bg-white/30 px-5 py-2 rounded-full text-sm font-bold transition-colors">Kembali</a>
@@ -29,8 +29,8 @@
             <source src="{{ asset('videos/back.mp4') }}" type="video/mp4">
         </video>
         <div class="absolute inset-0 bg-black/20 z-0"></div> <div class="relative z-10 fade-up opacity-0 translate-y-8 transition-all duration-700">
-            <h1 class="text-white text-3xl md:text-4xl font-extrabold mb-2 drop-shadow-md">Pengajuan Surat Permohonan</h1>
-            <p class="text-white/90 font-medium">Layanan mandiri pembuatan surat permohonan administrasi RT</p>
+            <h1 class="text-white text-3xl md:text-4xl font-extrabold mb-2 drop-shadow-md">Pengajuan Ambulance Darurat</h1>
+            <p class="text-white/90 font-medium">Layanan medis darurat untuk kebutuhan emergensi</p>
         </div>
         <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
             <svg class="relative block w-full h-[60px] md:h-[80px]" viewBox="0 0 1200 120" preserveAspectRatio="none">
@@ -43,8 +43,8 @@
         <div class="fade-up opacity-0 translate-y-12 transition-all duration-700 delay-100 bg-white rounded-3xl shadow-[0_10px_40px_rgba(0,0,0,0.06)] p-8 border border-gray-100">
             
             <div class="mb-6 border-b border-gray-100 pb-4">
-                <h2 class="text-xl font-bold text-gray-800">Form Permohonan Baru</h2>
-                <p class="text-sm text-gray-500 mt-1 font-medium">Isi data dengan benar. PDF otomatis terunduh setelah menekan tombol kirim.</p>
+                <h2 class="text-xl font-bold text-gray-800">Form Pengajuan Ambulance Darurat</h2>
+                <p class="text-sm text-gray-500 mt-1 font-medium">Silakan isi formulir di bawah ini untuk mengajukan layanan ambulance darurat.</p>
             </div>
 
             <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
@@ -80,7 +80,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2">Kondisi Medis Pasien (patokan)</label>
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Kondisi Medis Pasien </label>
                     <textarea name="kondisi" required rows="3" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-red-500 outline-none text-sm"></textarea>
                 </div>
 
@@ -142,7 +142,7 @@
                                 });
                         },
                         (err) => { 
-                            status.textContent = "❌ Gagal akses lokasi. Pastikan GPS HP menyala."; 
+                            status.textContent = " Gagal akses lokasi. Pastikan GPS HP menyala."; 
                             status.style.color = "red"; 
                         },
                         { enableHighAccuracy: true }
