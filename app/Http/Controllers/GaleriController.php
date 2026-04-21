@@ -22,7 +22,7 @@ class GaleriController extends Controller
         $request->validate([
             'judul' => 'required|string',
             'kategori' => 'required|string',
-            'foto' => 'required|image|mimes:jpg,jpeg,png|max:5120' // Max 5MB
+            'foto' => 'required|image|mimes:jpg,jpeg,png|max:5120' 
         ]);
 
         $foto = $request->file('foto');
@@ -42,7 +42,6 @@ class GaleriController extends Controller
     {
         $galeri = Galeri::findOrFail($id);
         
-        // Hapus file fisik dari folder agar penyimpanan tidak penuh
         if (File::exists(public_path($galeri->foto))) {
             File::delete(public_path($galeri->foto));
         }

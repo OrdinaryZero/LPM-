@@ -14,7 +14,7 @@ public function up(): void
         Schema::create('galeris', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('kategori'); // Misal: Struktur Organisasi, Armada, Dokumentasi
+            $table->string('kategori'); 
             $table->string('foto');
             $table->timestamps();
         });

@@ -8,26 +8,26 @@ use Illuminate\Support\Facades\Storage;
 
 class PetugasController extends Controller
 {
-    // 1. Tampilkan Halaman Manajemen Staf (Dipisah 2 Kategori)
+
     public function index()
     {
         if (!session('is_admin')) return redirect()->route('admin.login');
         
-        // Pisahkan data untuk dilempar ke View
+
         $tim_inti = Petugas::where('kategori_petugas', 'Pengurus')->latest()->get();
         $petugas_lapangan = Petugas::where('kategori_petugas', 'Lapangan')->latest()->get();
         
         return view('admin.petugas', compact('tim_inti', 'petugas_lapangan'));
     }
 
-    // 2. Simpan Petugas/Tim Inti Baru
+
     public function store(Request $request)
     {
         $request->validate([
             'nama' => 'required|string',
             'jabatan' => 'required|string',
             'kategori_petugas' => 'required|in:Pengurus,Lapangan',
-            'no_hp' => 'nullable', // Dibuat nullable karena Tim Inti gak wajib ada No HP
+            'no_hp' => 'nullable', 
             'foto' => 'nullable|image|mimes:jpg,jpeg,png|max:2048'
         ]);
 
@@ -42,7 +42,7 @@ class PetugasController extends Controller
         Petugas::create([
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
-            'no_hp' => $request->no_hp ?? '-', // Kalau kosong diisi strip '-'
+            'no_hp' => $request->no_hp ?? '-', 
             'kategori_petugas' => $request->kategori_petugas,
             'foto' => $path,
             'status_jaga' => 'Off' 

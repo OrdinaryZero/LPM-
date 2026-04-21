@@ -14,10 +14,10 @@ public function up(): void
         Schema::create('petugas', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('jabatan'); // Contoh: Komandan Regu, Paramedis, Supir
+            $table->string('jabatan'); 
             $table->string('no_hp');
-            $table->string('status_jaga')->default('Off'); // Contoh: Aktif / Off
-            $table->string('foto')->nullable(); // Foto petugas (bisa kosong)
+            $table->string('status_jaga')->default('Off'); 
+            $table->string('foto')->nullable(); 
             $table->timestamps();
         });
     }

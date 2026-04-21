@@ -9,14 +9,13 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         html { scroll-behavior: smooth; } 
-        /* 1. Kondisi A: Saat Masih Tersembunyi */
+        
         .reveal {
             opacity: 0;
             transform: translateY(40px);
             transition: all 0.8s ease-out;
         }
 
-        /* 2. Kondisi B: Saat Sudah Muncul */
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
@@ -31,7 +30,6 @@
             animation: galeriSlide 25s linear infinite;
         }
         
-        /* Tambahan biar pas hover galerinya stop jalan */
         .animate-galeri:hover {
             animation-play-state: paused;
         }

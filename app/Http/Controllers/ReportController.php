@@ -38,7 +38,7 @@ class ReportController extends Controller
             'foto_kejadian' => $path,
         ]);
 
-        // Pesan WA yang rapi
+        // Pesan WA kee fonntere
         $pesanWA = "🚨 *LAPORAN RESCUE MASUK* 🚨\n\n"
                  . "🔥 Jenis: {$request->jenis}\n"
                  . "📝 Detail: {$request->deskripsi}\n\n"

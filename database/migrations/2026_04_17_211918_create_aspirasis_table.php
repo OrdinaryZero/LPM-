@@ -17,7 +17,7 @@ public function up()
         $table->string('no_hp');
         $table->string('kategori');
         $table->text('pesan');
-        $table->string('status')->default('Menunggu'); // Otomatis 'Menunggu' pas masuk
+        $table->string('status')->default('Menunggu'); 
         $table->timestamps();
     });
 }

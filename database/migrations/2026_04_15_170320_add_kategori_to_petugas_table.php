@@ -12,7 +12,6 @@ return new class extends Migration
 public function up()
 {
     Schema::table('petugas', function (Blueprint $table) {
-        // Tambah kolom untuk membedakan Pengurus Inti vs Petugas Lapangan
         $table->enum('kategori_petugas', ['Pengurus', 'Lapangan'])->default('Lapangan')->after('jabatan');
     });
 }

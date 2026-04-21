@@ -9,6 +9,6 @@ class Laporan extends Model
 {
     use HasFactory;
 
-    // Tambahkan baris ini agar data boleh dimasukkan ke database
+
     protected $fillable = ['nama_warga', 'no_rumah', 'kategori', 'deskripsi_laporan', 'status'];
 }

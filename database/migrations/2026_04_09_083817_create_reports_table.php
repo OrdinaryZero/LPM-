@@ -15,7 +15,7 @@ public function up()
         $table->id();
         $table->string('nama_warga');
         $table->string('no_rumah');
-        $table->string('kategori'); // Keamanan, Kebersihan, Fasilitas, dll
+        $table->string('kategori');
         $table->text('deskripsi_laporan');
         $table->string('status')->default('Menunggu Diproses');
         $table->timestamps();

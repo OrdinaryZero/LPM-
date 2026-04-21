@@ -33,10 +33,10 @@ Route::get('/lapor', function () {
 
 Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
 
-// JALUR PUBLIK (WARGA)
+// Route PUBLIK 
 Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
 Route::post('/aspirasi/kirim', [AspirasiController::class, 'store'])->name('aspirasi.store');
-// JALUR ADMIN PANEL
+// Route ADMIN PANEL
 Route::get('/admin/aspirasi', [AspirasiController::class, 'adminIndex'])->name('admin.aspirasi.index');
 Route::post('/admin/aspirasi/{id}/status', [AspirasiController::class, 'updateStatus'])->name('admin.aspirasi.status');
 
@@ -44,7 +44,7 @@ Route::get('/usulan', [UsulanController::class, 'index'])->name('usulan.index');
 Route::get('/usulan', [UsulanController::class, 'index'])->name('usulan.index');
 Route::post('/usulan/kirim', [UsulanController::class, 'store'])->name('usulan.store');
 
-// JALUR ADMIN PANEL
+// Route ADMIN PANEL
 Route::get('/admin/usulan', [UsulanController::class, 'adminIndex'])->name('admin.usulan.index');
 Route::post('/admin/usulan/{id}/status', [UsulanController::class, 'updateStatus'])->name('admin.usulan.status');
 Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
@@ -96,7 +96,7 @@ Route::post('/live-report', [AdminAuthController::class, 'login'])->name('admin.
 Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
 
 
-// --- RUTE MANAJEMEN STAF (CMS) ---
+// --- RUTE MANAJEMEN STAFf (CMS) ---
 Route::get('/admin/petugas', [PetugasController::class, 'index'])->name('admin.petugas');
 Route::post('/admin/petugas/tambah', [PetugasController::class, 'store'])->name('admin.petugas.store');
 Route::post('/admin/petugas/toggle/{id}', [PetugasController::class, 'toggleStatus'])->name('admin.petugas.toggle');
@@ -114,11 +114,11 @@ Route::get('/admin/dashboard', function () {
 Route::get('/admin/dashboard', function () {
     if (!session('is_admin')) return redirect()->route('admin.login');
 
-    // Data lama lu (Ambulance/Laporan)
+    // Data lama 
     $totalLaporanHariIni = \App\Models\Ambulance::whereDate('created_at', \Carbon\Carbon::today())->count();
     $totalAmbulance = \App\Models\Ambulance::count(); 
-    $totalRescue = \App\Models\Ambulance::count(); // Ganti sesuai model lu
-    $laporanTerbaru = \App\Models\Ambulance::latest()->take(5)->get(); // Karena gw liat lu masih manggil ini di log
+    $totalRescue = \App\Models\Ambulance::count();
+    $laporanTerbaru = \App\Models\Ambulance::latest()->take(5)->get(); 
 
     // Data Baru (Petugas)
     $petugas_aktif = \App\Models\Petugas::where('kategori_petugas', 'Lapangan')
@@ -146,7 +146,7 @@ Route::get('/admin/logs', function () {
     return view('admin.logs', compact('logs'));
 })->name('admin.logs');
 
-// Route buat update status laporan (Opsional, biar admin bisa nandain laporan udah selesai)
+// Route update status
 Route::post('/admin/logs/{id}/status', function (\Illuminate\Http\Request $request, $id) {
     if (!session('is_admin')) return redirect()->route('admin.login');
     

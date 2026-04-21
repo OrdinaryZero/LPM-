@@ -9,7 +9,6 @@ class Petugas extends Model
 {
     use HasFactory;
 
-    // Pastikan 'kategori_petugas' masuk ke sini!
     protected $fillable = [
         'nama', 
         'jabatan', 

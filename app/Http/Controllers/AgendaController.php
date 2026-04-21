@@ -7,10 +7,10 @@ use App\Models\Agenda;
 
 class AgendaController extends Controller
 {
-    // === UNTUK HALAMAN PUBLIK WARGA ===
+    // === UNTUK HALAMAN PUBLIK ===
     public function index()
     {
-        // Ambil agenda mulai dari yang paling dekat harinya
+
         $agendas = Agenda::orderBy('tanggal', 'asc')->get();
         return view('agenda', compact('agendas'));
     }

@@ -123,7 +123,7 @@
 
     function initMap(lat, lng) {
         if (!mapRescue) {
-            // Buat peta pertama kali
+            // Buat peta 
             mapRescue = L.map('map').setView([lat, lng], 16);
             L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(mapRescue);
             markerRescue = L.marker([lat, lng]).addTo(mapRescue);
@@ -151,17 +151,13 @@
                 const lat = pos.coords.latitude;
                 const lng = pos.coords.longitude;
                 
-                // 1. Tampilkan Peta
                 initMap(lat, lng);
                 
-                // 2. Simpan Link GPS ke input tersembunyi
                 inputLink.value = `https://www.google.com/maps?q=${lat},${lng}`;
                 
-                // 3. Ubah Koordinat jadi Nama Jalan (Reverse Geocoding)
                 fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lng}`)
                     .then(res => res.json())
                     .then(data => {
-                        // Masukkan nama jalan ke textarea biar warga bisa nambahin patokan
                         inputTeks.value = data.display_name + " (Patokan tambahan: ...)";
                         status.textContent = "✅ Lokasi Akurat Ditemukan!"; 
                         status.style.color = "green";
@@ -177,9 +173,7 @@
             { enableHighAccuracy: true }
         );
     }
-    
-    // Jalankan otomatis saat web dibuka
-    window.onload = ambilLokasiRescue;
+        window.onload = ambilLokasiRescue;
 </script>
             </div>
         </div>
