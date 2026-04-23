@@ -116,11 +116,16 @@
             <source src="{{ asset('videos/back.mp4') }}" type="video/mp4">
         </video>
         
-        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#c09015]/80 via-[#d4a017]/60 to-[#fcd34d]/40 z-10"></div>
+
+        <!-- KUNING -->
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#c09015]/80 via-[#d4a017]/60 to-[#fcd34d]/40 z-10"></div> 
+
+        <!-- BIRU -->
+        <!-- <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0f172a]/80 via-[#1e40af]/60 to-[#60a5fa]/40"></div> --> 
 
         <div class="max-w-4xl relative z-20 w-full md:w-1/2">
             <div class="mb-6 fade-up reveal opacity-0 translate-y-8 transition-all duration-1000">
-                <img src="{{ asset('images/logort.png') }}" alt="Logo Instansi" class="w-20 md:w-28 h-auto drop-shadow-xl mb-6 hover:scale-105 transition-transform duration-300">
+                <img src="{{ asset('images/logort.png') }}" alt="Logo Instansi" class="w-20 md:w-40 h-auto drop-shadow-xl mb-6 hover:scale-105 transition-transform duration-300">
                 <h2 class="text-white/90 text-xs md:text-sm font-semibold mb-2 tracking-widest uppercase drop-shadow-sm">Mitra Pemerintah Kota, Pelindung Masyarakat</h2>
                 <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow-md">Pusat Komando <br> LPM Banjarbaru</h1>
                 <p class="text-white/90 mt-5 max-w-md text-[14px] md:text-base leading-relaxed drop-shadow-sm font-medium">Sistem tanggap darurat, pelayanan sosial, dan pemberdayaan masyarakat. Bersama kita wujudkan kota yang responsif, aman, dan siaga.</p>
@@ -141,12 +146,7 @@
         </div>
     </section>
 
-    <section class="bg-white relative z-40 pb-16 px-4">
-        <div class="max-w-7xl mx-auto bg-white rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.06)] border border-gray-100 p-8 md:p-14 ">
-        </div>
-    </section>
-
-<section class="bg-white -mt-10 md:-mt-40 relative z-40 pb-16 px-4">
+    <section class="relative z-40 pb-16 px-4">
         <div class="max-w-5xl mx-auto bg-white rounded-[40px] shadow-[0_15px_50px_rgba(0,0,0,0.05)] border border-gray-100 p-8 md:p-12">
 
             <div class="flex justify-center mb-12 fade-up reveal">
@@ -165,8 +165,7 @@
 
             <div class="border-t border-gray-100 w-3/4 mx-auto mb-10 fade-up reveal"></div>
 
-<div class="flex flex-wrap justify-center gap-8 md:gap-24 fade-up reveal delay-100">
-                
+            <div class="flex flex-wrap justify-center gap-8 md:gap-24 fade-up reveal delay-100">
                 <a href="{{ route('aspirasi.index') }}" class="flex flex-col items-center group cursor-pointer w-24 md:w-32">
                     <div class="w-16 h-16 md:w-20 md:h-20 bg-gray-50 border border-gray-100 rounded-full flex items-center justify-center shadow-[0_5px_20px_rgba(0,0,0,0.04)] mb-3 group-hover:-translate-y-2 group-hover:border-blue-200 transition-all duration-300">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-700 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -193,9 +192,7 @@
                     </div>
                     <span class="text-xs md:text-sm font-bold text-gray-600 tracking-wide group-hover:text-green-600 text-center transition-colors">Agenda<br>Sosial</span>
                 </a>
-
             </div>
-
         </div>
     </section>
 
@@ -203,9 +200,9 @@
         <div class="flex flex-col md:flex-row gap-10 items-center bg-gray-50 rounded-[40px] p-8 md:p-12 shadow-sm border border-gray-100 fade-up reveal">
             
             <div class="w-full md:w-1/3 text-center shrink-0">
-                <img src="{{ asset('images/siganteng.jpeg') }}" class="w-40 h-40 object-cover rounded-full mx-auto shadow-md border-4 border-white mb-4">
+                <img src="{{ asset('images/Ketua.png') }}" class="w-40 h-40 object-cover rounded-full mx-auto shadow-md border-4 border-white mb-4">
                 <span class="text-[10px] font-extrabold bg-[#d4a017] text-white px-3 py-1 rounded-full uppercase tracking-widest">Ketua LPM Banjarbaru</span>
-                <h3 class="text-xl font-extrabold mt-3 text-gray-900">Aditya Febrian</h3>
+                <h3 class="text-xl font-extrabold mt-3 text-gray-900">M. Ady Santana Putra</h3>
             </div>
 
             <div class="w-full md:w-2/3">
@@ -215,7 +212,6 @@
                 </p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    
                     <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                         <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center shrink-0 mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
@@ -225,7 +221,6 @@
                             <p class="text-[11px] font-medium text-gray-500 leading-snug">Menyusun rencana pembangunan partisipatif via Musrenbangdes.</p>
                         </div>
                     </div>
-
                     <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                         <div class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center shrink-0 mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" /></svg>
@@ -235,8 +230,7 @@
                             <p class="text-[11px] font-medium text-gray-500 leading-snug">Menampung suara warga terkait infrastruktur & program sosial.</p>
                         </div>
                     </div>
-
-                    <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                        <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                         <div class="w-8 h-8 rounded-full bg-yellow-50 text-[#d4a017] flex items-center justify-center shrink-0 mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
                         </div>
@@ -255,7 +249,6 @@
                             <p class="text-[11px] font-medium text-gray-500 leading-snug">Mengawasi jalannya proyek agar tepat sasaran dan bermanfaat.</p>
                         </div>
                     </div>
-
                     <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow md:col-span-2">
                         <div class="w-8 h-8 rounded-full bg-red-50 text-red-600 flex items-center justify-center shrink-0 mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
@@ -265,65 +258,64 @@
                             <p class="text-[11px] font-medium text-gray-500 leading-snug">Membantu kelompok ekonomi masyarakat, UMKM lokal, dan meningkatkan kapasitas SDM warga Banjarbaru.</p>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+    </section>
 
-        <section id="struktur-pengurus" class="bg-white scroll-mt-24">
-    <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-        <div class="text-center mb-16 fade-up reveal">
-            <span class="text-[#d4a017] font-extrabold text-sm uppercase tracking-widest mb-2 block">Tim Inti</span>
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Struktur Komando & Pengurus</h2>
-            <div class="w-16 h-1.5 bg-[#d4a017] mx-auto rounded-full"></div>
-            <p class="text-gray-500 font-medium mt-4">Jajaran pengurus operasional dan koordinator relawan LPM Banjarbaru.</p>
-        </div>
+    <section id="struktur-pengurus" class="max-w-7xl mx-auto px-6 lg:px-12 py-16 scroll-mt-24">
+        <div class="bg-gray-50 rounded-[40px] shadow-sm border border-gray-100 p-8 md:p-12">
+            
+            <div class="text-center mb-16 fade-up reveal">
+                <span class="text-[#d4a017] font-extrabold text-sm uppercase tracking-widest mb-2 block">Tim Inti</span>
+                <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Struktur Komando & Pengurus</h2>
+                <div class="w-16 h-1.5 bg-[#d4a017] mx-auto rounded-full"></div>
+                <p class="text-gray-500 font-medium mt-4">Jajaran pengurus operasional Pusat Komando & Layanan Terpadu LPM Banjarbaru.</p>
+            </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            @forelse ($pengurus as $index => $p)
-                @php
-                    $styles = [
-                        [ 'bg' => 'bg-[#d4a017]', 'text' => 'text-[#d4a017]', 'icon' => 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z' ],
-                        [ 'bg' => 'bg-blue-500', 'text' => 'text-blue-600', 'icon' => 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' ],
-                        [ 'bg' => 'bg-red-500', 'text' => 'text-red-600', 'icon' => 'M13 10V3L4 14h7v7l9-11h-7z' ],
-                        [ 'bg' => 'bg-green-500', 'text' => 'text-green-600', 'icon' => 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' ]
-                    ];
-                    $style = $styles[$index % 4]; 
-                @endphp
+            @if(isset($strukturPuncak) && $strukturPuncak->count() > 0)
+            <div class="overflow-x-auto pb-16 fade-up reveal border-b border-gray-200 mb-16">
+                <div class="min-w-[800px] flex justify-center">
+                    @foreach($strukturPuncak as $puncak)
+                        @include('components.tree-node', ['node' => $puncak])
+                    @endforeach
+                </div>
+            </div>
+            @endif
 
-                <div class="bg-gray-50 p-8 rounded-[30px] border border-gray-100 text-center hover:bg-white hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 fade-up reveal" style="transition-delay: {{ $index * 75 }}ms;">
-                    <div class="relative w-28 h-28 mx-auto mb-5">
-<div class="relative w-28 h-28 mx-auto mb-5 bg-gray-100 rounded-full border-4 border-white shadow-md">
-    @if($p->foto)
-        <img src="{{ asset($p->foto) }}" alt="{{ $p->nama }}" class="w-full h-full object-cover rounded-full">
-    @else
-        <svg class="w-full h-full text-gray-300 p-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-    @endif
-    
-    <div class="absolute bottom-0 right-0 {{ $style['bg'] }} text-white p-1.5 rounded-full shadow-sm">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $style['icon'] }}" />
-        </svg>
-    </div>
-</div>
-                        <div class="absolute bottom-0 right-0 {{ $style['bg'] }} text-white p-1.5 rounded-full shadow-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $style['icon'] }}" />
-                            </svg>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                @forelse ($pengurus as $index => $p)
+                    @php
+                        $styles = [
+                            [ 'bg' => 'bg-[#d4a017]', 'text' => 'text-[#d4a017]', 'icon' => 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z' ],
+                            [ 'bg' => 'bg-blue-500', 'text' => 'text-blue-600', 'icon' => 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' ],
+                            [ 'bg' => 'bg-red-500', 'text' => 'text-red-600', 'icon' => 'M13 10V3L4 14h7v7l9-11h-7z' ],
+                            [ 'bg' => 'bg-green-500', 'text' => 'text-green-600', 'icon' => 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' ]
+                        ];
+                        $style = $styles[$index % 4]; 
+                    @endphp
+
+                    <div class="bg-white p-8 rounded-[30px] border border-gray-100 text-center hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 fade-up reveal" style="transition-delay: {{ $index * 75 }}ms;">
+                        <div class="relative w-28 h-28 mx-auto mb-5 bg-gray-100 rounded-full border-4 border-white shadow-md">
+                            @if($p->foto)
+                                <img src="{{ asset($p->foto) }}" alt="{{ $p->nama }}" class="w-full h-full object-cover rounded-full">
+                            @else
+                                <svg class="w-full h-full text-gray-300 p-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
+                            @endif
+                            <div class="absolute bottom-0 right-0 {{ $style['bg'] }} text-white p-1.5 rounded-full shadow-sm">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $style['icon'] }}" />
+                                </svg>
+                            </div>
                         </div>
+                        <h3 class="text-xl font-extrabold text-gray-900 mb-1">{{ $p->nama }}</h3>
+                        <p class="text-xs font-bold {{ $style['text'] }} uppercase tracking-widest">{{ $p->jabatan }}</p>
                     </div>
-                    <h3 class="text-xl font-extrabold text-gray-900 mb-1">{{ $p->nama }}</h3>
-                    <p class="text-xs font-bold {{ $style['text'] }} uppercase tracking-widest">{{ $p->jabatan }}</p>
-                </div>
-            @empty
-                <div class="col-span-full text-center py-8">
-                    <p class="text-gray-500 italic">Data struktural belum diatur di Admin.</p>
-                </div>
-            @endforelse
+                @empty
+                    @endforelse
+            </div>
         </div>
-    </div>
-</section>
-        </section>
+    </section>
 
     <section id="informasi" class="max-w-7xl mx-auto px-6 lg:px-12 py-16 scroll-mt-24">
         <div class="text-center mb-12 fade-up reveal">
@@ -368,12 +360,12 @@
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
             <div class="lg:col-span-2 group cursor-pointer fade-up reveal">
                 <div class="overflow-hidden rounded-[30px] shadow-sm mb-6">
-                    <img src="{{ asset('images/berita1.jpeg') }}" alt="Giat Utama" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
+                    <img src="{{ asset('images/berita5.JPG') }}" alt="Giat Utama" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
                 </div>
                 <div class="flex items-center gap-3 text-sm font-bold text-[#d4a017] mb-3 uppercase tracking-widest">
                     <span>Pelatihan Siaga</span> <span class="text-gray-300">•</span> <span class="text-gray-500">10 April 2026</span>
                 </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight group-hover:text-[#d4a017] transition-colors">Pelatihan Rescue Terpadu & Pertolongan Pertama Medis</h3>
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight group-hover:text-[#d4a017] transition-colors">Temu Koordinasi Pembuatan Website LPM Banjarbaru dengan mahasiswa UIN Antasari Banjarmasin</h3>
             </div>
 
             <div class="flex flex-col gap-8">
@@ -415,31 +407,21 @@
                     @forelse ($armada as $img)
                         <div class="min-w-[250px] h-72 rounded-2xl overflow-hidden shadow-md relative bg-white">
                             <img src="{{ asset('uploads/galeri/' . $img->foto) }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                            <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                                <p class="text-white text-sm font-bold truncate">{{ $img->judul }}</p>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="w-full text-center py-10">
-                            <p class="text-gray-500 italic">Data dokumentasi armada belum tersedia.</p>
-                        </div>
-                    @endforelse
-
-                    @if($armada->count() > 0)
-                        @foreach ($armada as $img)
-                            <div class="min-w-[250px] h-72 rounded-2xl overflow-hidden shadow-md relative bg-white">
-                                <img src="{{ asset('uploads/galeri/' . $img->foto) }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
                                 <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                                     <p class="text-white text-sm font-bold truncate">{{ $img->judul }}</p>
                                 </div>
-                            </div>
-                        @endforeach
-                    @endif
+                        </div>
+                    @empty
+                        <div class="w-full text-center py-10">
+                            <p class="text-gray-500 italic">Data dokumentasi belum tersedia.</p>
+                        </div>
+                    @endforelse
 
                 </div>
             </div>
         </div>
     </section>
+
     <section id="lokasi" class="bg-gray-50 scroll-mt-24">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16">
             <div class="flex flex-col md:flex-row gap-10 items-center">
@@ -461,9 +443,9 @@
                     <div class="bg-white p-2 rounded-[30px] shadow-sm border border-gray-100">
                         <div class="w-full h-[350px] md:h-[450px] rounded-[24px] overflow-hidden bg-gray-200">
                             <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.5959744918246!2d114.79162600000001!3d-3.447988!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de683c42a53e09d%3A0x999feec9ff68ddf0!2sLembaga%20Pemberdayaan%20Masyarakat%20LPM!5e0!3m2!1sen!2sid!4v1776187966933!5m2!1sen!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3982.6281044037505!2d114.8304830758498!3d-3.4403076417763003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2de6810cad59d1a7%3A0x656fa4527ed9cd0f!2sDPC%20LPM!5e0!3m2!1sen!2sid!4v1776928781647!5m2!1sen!2sid" 
                                 width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-                            </www.google.com>
+                            </iframe>
                         </div>
                     </div>
                 </div>

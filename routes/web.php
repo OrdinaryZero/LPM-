@@ -16,6 +16,7 @@ use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\AspirasiController;
 use App\Http\Controllers\UsulanController;
 use App\Http\Controllers\AgendaController;
+use App\Http\Controllers\StrukturController;
 
 Route::get('/', function () {
     return view('beranda'); 
@@ -109,6 +110,12 @@ Route::get('/admin/dashboard', function () {
     return view('admin.dashboard'); 
 })->name('admin.dashboard');
 
+Route::prefix('admin')->group(function () {
+    Route::get('/struktur', [StrukturController::class, 'index'])->name('admin.struktur.index');
+    Route::post('/struktur', [StrukturController::class, 'store'])->name('admin.struktur.store');
+    Route::delete('/struktur/{struktur}', [StrukturController::class, 'destroy'])->name('admin.struktur.destroy');
+});
+
 
 
 Route::get('/admin/dashboard', function () {
@@ -156,3 +163,8 @@ Route::post('/admin/logs/{id}/status', function (\Illuminate\Http\Request $reque
 
     return redirect()->back()->with('success', 'Status laporan berhasil diperbarui!');
 })->name('admin.logs.status');
+
+
+Route::post('/admin/struktur/reorder', [StrukturController::class, 'reorder'])->name('admin.struktur.reorder');
+
+Route::put('/admin/struktur/{id}', [StrukturController::class, 'update'])->name('admin.struktur.update');

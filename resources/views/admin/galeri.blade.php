@@ -92,9 +92,6 @@
                         <label class="block text-sm font-bold text-gray-700 mb-1">Pilih Kategori Tampilan</label>
                         <select name="kategori" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-[#d4a017] outline-none text-sm">
                             <option value="Armada">Armada & Fasilitas</option>
-                            <option value="Dokumentasi">Dokumentasi Evakuasi</option>
-                            <option value="Struktur">Bagan Struktur Organisasi</option>
-                            <option value="Sosial">Kegiatan Sosial</option>
                         </select>
                     </div>
                 <div>
