@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\File;
 
 class StrukturController extends Controller
 {
+    
     public function index()
     {
+        if (!\Illuminate\Support\Facades\Auth::check()) return redirect()->route('admin.login');
         $strukturs = Struktur::with('atasan')->orderBy('urutan')->get();
         
         $pilihanFoto = [];

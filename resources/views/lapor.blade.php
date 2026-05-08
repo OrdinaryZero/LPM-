@@ -8,10 +8,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        /* Tambahan animasi pop-up mantul */
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+            50% { transform: translate(-50%, -50%) scale(1.05); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+        }
+        .animate-pop-in {
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
     </style>
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
 
+    @if(session('success'))
+        <div id="toastOverlay" class="fixed inset-0 bg-black/70 z-[998] backdrop-blur-sm transition-opacity"></div>
+        
+        <div id="toastSukses" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-[999] bg-white px-8 py-10 rounded-[32px] shadow-2xl w-[90%] max-w-md text-center border-t-8 border-green-500 animate-pop-in">
+            <div class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+            </div>
+            
+            <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Laporan Terkirim!</h3>
+            
+            <div class="bg-gray-50 p-5 rounded-2xl border border-gray-200 mb-8">
+                <p class="text-[15px] font-semibold text-gray-700 leading-relaxed">
+                    {!! str_replace('Kode Laporan Anda:', '<br><br><span class="block text-xs uppercase tracking-widest text-gray-500 mb-1">KODE LAPORAN ANDA:</span><span class="text-2xl font-extrabold text-red-600 tracking-wider bg-red-50 py-2 px-4 rounded-xl inline-block border border-red-100">', session('success')) !!}
+                    </span>
+                </p>
+            </div>
+            
+            <button onclick="tutupNotif()" class="w-full bg-green-500 hover:bg-green-600 text-white font-extrabold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 uppercase tracking-wide text-sm">
+                Saya Sudah Catat Kodenya
+            </button>
+        </div>
+
+        <script>
+            // Modal tidak akan hilang otomatis, wajib ditekan tombolnya
+            function tutupNotif() {
+                document.getElementById('toastSukses').style.display = 'none';
+                document.getElementById('toastOverlay').style.display = 'none';
+            }
+        </script>
+    @endif
     <nav class="absolute top-0 left-0 w-full z-50 py-6 px-6 md:px-12 flex justify-between items-center text-white">
         <div class="flex items-center gap-8">
             <a href="{{ route('beranda') }}"><img src="{{ asset('images/logort.png') }}" class="h-10 hover:scale-105 transition-transform"></a>
@@ -94,6 +134,7 @@
             <textarea id="lokasi_teks" name="lokasi" required rows="2" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-red-500 outline-none text-sm font-medium" placeholder="Mencari alamat lokasi... (Bisa ditambahkan patokan manual)"></textarea>
             
             <input type="hidden" name="link_gps" id="link_gps">
+            
             
             <button type="button" onclick="ambilLokasiRescue()" class="absolute right-2 top-2 text-[10px] bg-red-100 text-red-700 px-3 py-1.5 rounded-md font-bold uppercase hover:bg-red-200 transition-colors">
                 📍 Lacak Ulang
@@ -263,7 +304,7 @@
             </div>
 
             <div class="border-t border-gray-800 pt-8 text-center md:text-left text-sm font-medium text-gray-500">
-                <p>Website Resmi Layanan LPM Banjarbaru Banjarbaru &copy; 2026 &middot; Hak Cipta Dilindungi Undang-Undang.</p>
+                <p>Website Resmi Layanan LPM Banjarbaru Banjarbaru © 2026 · Hak Cipta Dilindungi Undang-Undang.</p>
             </div>
         </div>
     </footer>

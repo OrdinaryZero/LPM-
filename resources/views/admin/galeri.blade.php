@@ -13,7 +13,7 @@
     <header class="bg-[#1f2328] text-white py-4 px-8 shadow-md flex justify-between items-center">
         <div class="flex items-center gap-4">
             <img src="{{ asset('images/logort.png') }}" alt="Logo" class="h-8">
-            <h1 class="font-bold text-lg border-l border-gray-600 pl-4">Manajemen Galeri & Struktur</h1>
+            <h1 class="font-bold text-lg border-l border-gray-600 pl-4">Manajemen Galeri & Aset Visual</h1>
         </div>
         <a href="{{ route('admin.dashboard') }}" class="text-sm font-bold text-gray-300 hover:text-white bg-white/10 px-4 py-2 rounded-lg transition-colors">
             &larr; Kembali ke Dashboard
@@ -25,7 +25,7 @@
         <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
             <div>
                 <h2 class="text-2xl font-extrabold text-gray-800">Aset Visual Web</h2>
-                <p class="text-gray-500 font-medium text-sm mt-1">Unggah foto dokumentasi, armada, atau perbarui struktur organisasi web.</p>
+                <p class="text-gray-500 font-medium text-sm mt-1">Unggah foto dokumentasi kegiatan atau foto armada untuk ditampilkan di Beranda.</p>
             </div>
             <button onclick="document.getElementById('modalTambah').classList.remove('hidden')" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all text-sm flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
@@ -46,7 +46,8 @@
                         <img src="{{ asset($g->foto) }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                         
                         <div class="absolute top-3 left-3">
-                            <span class="bg-black/70 backdrop-blur text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">
+                            <span class="backdrop-blur text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase tracking-wider
+                                {{ $g->kategori == 'Dokumentasi' ? 'bg-[#d4a017]/90' : 'bg-black/70' }}">
                                 {{ $g->kategori }}
                             </span>
                         </div>
@@ -67,7 +68,7 @@
                 <div class="col-span-full bg-white p-16 text-center rounded-2xl shadow-sm border border-gray-100 border-dashed">
                     <svg class="w-16 h-16 text-gray-300 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
                     <h3 class="text-lg font-bold text-gray-500 mb-1">Galeri Masih Kosong</h3>
-                    <p class="text-sm text-gray-400">Silakan unggah foto struktur atau dokumentasi armada di sini.</p>
+                    <p class="text-sm text-gray-400">Silakan unggah foto dokumentasi kegiatan atau armada di sini.</p>
                 </div>
             @endforelse
         </div>
@@ -86,14 +87,17 @@
                 @csrf
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Judul / Deskripsi Singkat</label>
-                    <input type="text" name="judul" required placeholder="Misal: Ambulance Alpha 01" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-[#d4a017] outline-none text-sm">
+                    <input type="text" name="judul" required placeholder="Misal: Apel Siaga 2026 atau Ambulance 01" class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-[#d4a017] outline-none text-sm">
                 </div>
-                    <div>
-                        <label class="block text-sm font-bold text-gray-700 mb-1">Pilih Kategori Tampilan</label>
-                        <select name="kategori" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-[#d4a017] outline-none text-sm">
-                            <option value="Armada">Armada & Fasilitas</option>
-                        </select>
-                    </div>
+                
+                <div>
+                    <label class="block text-sm font-bold text-gray-700 mb-1">Pilih Kategori Tampilan</label>
+                    <select name="kategori" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-[#d4a017] outline-none text-sm">
+                        <option value="Dokumentasi">📸 Dokumentasi Kegiatan (Tampil di Beranda bawah)</option>
+                        <option value="Armada">🚑 Armada & Fasilitas (Tampil di Beranda atas)</option>
+                    </select>
+                </div>
+
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-1">Pilih File Foto</label>
                     <div class="border-2 border-dashed border-gray-300 rounded-xl p-6 text-center hover:bg-gray-50 transition-colors">

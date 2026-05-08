@@ -6,7 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Struktur extends Model
 {
-    protected $fillable = ['parent_id', 'nama', 'jabatan', 'foto_nomer', 'urutan'];
+    protected $fillable = [
+    'nama', 'jabatan', 'urutan', 'foto_nomer', 'parent_id', 'baris'
+];
 
     // Relasi ke bawahan (anak)
     public function bawahan()

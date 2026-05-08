@@ -33,6 +33,34 @@
         .animate-galeri:hover {
             animation-play-state: paused;
         }
+
+        /* --- ANIMASI CAROUSEL STRUKTUR --- */
+        @keyframes scrollCard {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } 
+        }
+        .animate-marquee {
+            display: flex;
+            width: max-content;
+            animation: scrollCard 30s linear infinite; 
+        }
+        .animate-marquee:hover {
+            animation-play-state: paused; 
+        }
+
+        /* Animasi Reverse (Jalan Balik arah untuk Baris Genap) */
+        @keyframes scrollCardReverse {
+            0% { transform: translateX(-50%); } 
+            100% { transform: translateX(0); } 
+        }
+        .animate-marquee-reverse {
+            display: flex;
+            width: max-content;
+            animation: scrollCardReverse 30s linear infinite; 
+        }
+        .animate-marquee-reverse:hover {
+            animation-play-state: paused; 
+        }
     </style>
 </head>
 <body class="bg-white min-h-screen">
@@ -116,12 +144,7 @@
             <source src="{{ asset('videos/back.mp4') }}" type="video/mp4">
         </video>
         
-
-        <!-- KUNING -->
         <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#c09015]/80 via-[#d4a017]/60 to-[#fcd34d]/40 z-10"></div> 
-
-        <!-- BIRU -->
-        <!-- <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-[#0f172a]/80 via-[#1e40af]/60 to-[#60a5fa]/40"></div> --> 
 
         <div class="max-w-4xl relative z-20 w-full md:w-1/2">
             <div class="mb-6 fade-up reveal opacity-0 translate-y-8 transition-all duration-1000">
@@ -150,18 +173,26 @@
         <div class="max-w-5xl mx-auto bg-white rounded-[40px] shadow-[0_15px_50px_rgba(0,0,0,0.05)] border border-gray-100 p-8 md:p-12">
 
             <div class="flex justify-center mb-12 fade-up reveal">
-                <a href="{{ route('lapor.index') }}" class="w-full max-w-2xl bg-white p-6 md:p-8 rounded-[30px] shadow-[0_10px_40px_rgba(0,0,0,0.04)] border border-gray-100 flex items-center gap-6 hover:shadow-[0_20px_50px_rgba(220,38,38,0.15)] hover:border-red-100 hover:-translate-y-2 transition-all duration-300 group">
-                    <div class="w-20 h-20 rounded-[24px] bg-red-50 text-red-600 flex items-center justify-center shrink-0 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                        </svg>
-                    </div>
-                    <div class="text-left">
-                        <h3 class="text-2xl md:text-3xl font-extrabold text-gray-900 mb-2 group-hover:text-red-600 transition-colors duration-300">Panggilan Darurat</h3>
-                        <p class="text-sm md:text-base font-medium text-gray-500 leading-snug">Layanan terpadu evakuasi medis (Ambulance), rescue, dan pelaporan insiden 24 Jam.</p>
-                    </div>
-                </a>
-            </div>
+    <a href="{{ route('lapor.index') }}" class="w-full max-w-2xl bg-gradient-to-br from-red-600 via-red-500 to-red-700 p-6 md:p-8 rounded-[30px] shadow-[0_10px_40px_rgba(220,38,38,0.25)] border border-red-400 flex items-center gap-6 hover:shadow-[0_20px_50px_rgba(220,38,38,0.35)] hover:-translate-y-2 transition-all duration-300 group">
+        
+        <div class="w-20 h-20 rounded-[24px] bg-white/20 text-white flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-red-600 transition-colors duration-300 shadow-sm backdrop-blur">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+            </svg>
+        </div>
+
+        <div class="text-left">
+            <h3 class="text-2xl md:text-3xl font-extrabold text-white mb-2">
+                Panggilan Darurat
+            </h3>
+
+            <p class="text-sm md:text-base font-medium text-red-100 leading-snug">
+                Layanan terpadu evakuasi medis (Ambulance), rescue, dan pelaporan insiden 24 Jam.
+            </p>
+        </div>
+
+    </a>
+</div>
 
             <div class="border-t border-gray-100 w-3/4 mx-auto mb-10 fade-up reveal"></div>
 
@@ -197,7 +228,7 @@
     </section>
 
     <section id="profil" class="max-w-7xl mx-auto px-6 lg:px-12 py-10 scroll-mt-24">
-        <div class="flex flex-col md:flex-row gap-10 items-center bg-gray-50 rounded-[40px] p-8 md:p-12 shadow-sm border border-gray-100 fade-up reveal">
+        <div class="flex flex-col md:flex-row gap-10 items-center bg-white-50 rounded-[40px] p-8 md:p-12 shadow-sm border border-gray-100 fade-up reveal">
             
             <div class="w-full md:w-1/3 text-center shrink-0">
                 <img src="{{ asset('images/Ketua.png') }}" class="w-40 h-40 object-cover rounded-full mx-auto shadow-md border-4 border-white mb-4">
@@ -230,7 +261,7 @@
                             <p class="text-[11px] font-medium text-gray-500 leading-snug">Menampung suara warga terkait infrastruktur & program sosial.</p>
                         </div>
                     </div>
-                                        <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="flex items-start gap-3 bg-white p-4 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
                         <div class="w-8 h-8 rounded-full bg-yellow-50 text-[#d4a017] flex items-center justify-center shrink-0 mt-0.5">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
                         </div>
@@ -263,57 +294,45 @@
         </div>
     </section>
 
-    <section id="struktur-pengurus" class="max-w-7xl mx-auto px-6 lg:px-12 py-16 scroll-mt-24">
-        <div class="bg-gray-50 rounded-[40px] shadow-sm border border-gray-100 p-8 md:p-12">
-            
-            <div class="text-center mb-16 fade-up reveal">
-                <span class="text-[#d4a017] font-extrabold text-sm uppercase tracking-widest mb-2 block">Tim Inti</span>
-                <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Struktur Komando & Pengurus</h2>
-                <div class="w-16 h-1.5 bg-[#d4a017] mx-auto rounded-full"></div>
-                <p class="text-gray-500 font-medium mt-4">Jajaran pengurus operasional Pusat Komando & Layanan Terpadu LPM Banjarbaru.</p>
-            </div>
+    <section id="struktur-pengurus" class="py-16 bg-white-50 border-y border-gray-100 scroll-mt-24">
+        
+        <div class="max-w-7xl mx-auto px-8 mb-10 text-center fade-up reveal">
+            <span class="text-[#d4a017] font-extrabold text-sm uppercase tracking-widest mb-2 block">Tim Inti</span>
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Struktur Komando LPM</h2>
+            <div class="w-16 h-1.5 bg-[#d4a017] mx-auto rounded-full"></div>
+            <p class="text-gray-500 font-medium mt-4">Pilar penggerak layanan masyarakat Banjarbaru</p>
+        </div>
 
-            @if(isset($strukturPuncak) && $strukturPuncak->count() > 0)
-            <div class="overflow-x-auto pb-16 fade-up reveal border-b border-gray-200 mb-16">
-                <div class="min-w-[800px] flex justify-center">
-                    @foreach($strukturPuncak as $puncak)
-                        @include('components.tree-node', ['node' => $puncak])
-                    @endforeach
-                </div>
-            </div>
-            @endif
+        <div class="relative w-full overflow-hidden fade-up reveal delay-100">
+            <div class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
+            <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                @forelse ($pengurus as $index => $p)
-                    @php
-                        $styles = [
-                            [ 'bg' => 'bg-[#d4a017]', 'text' => 'text-[#d4a017]', 'icon' => 'M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z' ],
-                            [ 'bg' => 'bg-blue-500', 'text' => 'text-blue-600', 'icon' => 'M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z' ],
-                            [ 'bg' => 'bg-red-500', 'text' => 'text-red-600', 'icon' => 'M13 10V3L4 14h7v7l9-11h-7z' ],
-                            [ 'bg' => 'bg-green-500', 'text' => 'text-green-600', 'icon' => 'M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z' ]
-                        ];
-                        $style = $styles[$index % 4]; 
-                    @endphp
-
-                    <div class="bg-white p-8 rounded-[30px] border border-gray-100 text-center hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:-translate-y-2 transition-all duration-300 fade-up reveal" style="transition-delay: {{ $index * 75 }}ms;">
-                        <div class="relative w-28 h-28 mx-auto mb-5 bg-gray-100 rounded-full border-4 border-white shadow-md">
-                            @if($p->foto)
-                                <img src="{{ asset($p->foto) }}" alt="{{ $p->nama }}" class="w-full h-full object-cover rounded-full">
-                            @else
-                                <svg class="w-full h-full text-gray-300 p-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path></svg>
-                            @endif
-                            <div class="absolute bottom-0 right-0 {{ $style['bg'] }} text-white p-1.5 rounded-full shadow-sm">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="{{ $style['icon'] }}" />
-                                </svg>
+            @foreach($struktursGrouped as $baris => $strukturs)
+                <div class="{{ $loop->even ? 'animate-marquee-reverse' : 'animate-marquee' }} gap-6 px-4 py-4 mb-4">
+                    
+                    @for ($i = 0; $i < 2; $i++)
+                        @foreach($strukturs as $item)
+                            <div class="w-64 flex-shrink-0 bg-white rounded-3xl border border-gray-200 p-8 flex flex-col items-center text-center shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-2 cursor-pointer group">
+                                <div class="w-28 h-28 rounded-full border-4 border-gray-50 shadow-inner overflow-hidden mb-5 group-hover:border-[#d4a017] transition-colors duration-300 bg-gray-100 flex items-center justify-center">
+                                    <img src="{{ asset('uploads/struktur/' . $item->foto_nomer) }}" 
+                                         alt="{{ $item->nama ?? 'Pengurus' }}"
+                                         class="w-full h-full object-cover" 
+                                         onerror="this.onerror=null; this.src='https://via.placeholder.com/150?text=No+Img';">
+                                </div>
+                                <h3 class="font-extrabold text-gray-900 text-lg w-full truncate" title="{{ $item->nama ?? 'Nama Belum Diisi' }}">
+                                    {{ $item->nama ?? 'Nama Belum Diisi' }}
+                                </h3>
+                                <div class="mt-3">
+                                    <span class="inline-block px-4 py-1.5 rounded-full text-xs font-bold bg-[#d4a017]/10 text-[#d4a017] tracking-wide uppercase">
+                                        {{ $item->jabatan }}
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <h3 class="text-xl font-extrabold text-gray-900 mb-1">{{ $p->nama }}</h3>
-                        <p class="text-xs font-bold {{ $style['text'] }} uppercase tracking-widest">{{ $p->jabatan }}</p>
-                    </div>
-                @empty
-                    @endforelse
-            </div>
+                        @endforeach
+                    @endfor
+                    
+                </div>
+            @endforeach
         </div>
     </section>
 
@@ -363,7 +382,7 @@
                     <img src="{{ asset('images/berita5.JPG') }}" alt="Giat Utama" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
                 </div>
                 <div class="flex items-center gap-3 text-sm font-bold text-[#d4a017] mb-3 uppercase tracking-widest">
-                    <span>Pelatihan Siaga</span> <span class="text-gray-300">•</span> <span class="text-gray-500">10 April 2026</span>
+                    <span>Kerjasama Mahasiswa</span> <span class="text-gray-300">•</span> <span class="text-gray-500">10 April 2026</span>
                 </div>
                 <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight group-hover:text-[#d4a017] transition-colors">Temu Koordinasi Pembuatan Website LPM Banjarbaru dengan mahasiswa UIN Antasari Banjarmasin</h3>
             </div>
@@ -394,33 +413,30 @@
         </div>
     </section>
 
-    <section id="galeri" class="py-20 bg-gray-50 overflow-hidden scroll-mt-24">
-        <div class="max-w-7xl mx-auto px-6 lg:px-12">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Dokumentasi Lapangan & Armada</h2>
-                <div class="w-16 h-1.5 bg-[#d4a017] mx-auto rounded-full"></div>
-            </div>
+    <section id="dokumentasi" class="max-w-7xl mx-auto px-6 lg:px-12 py-20 bg-gray-50 rounded-[40px] mb-20">
+    <div class="text-center mb-12 fade-up reveal">
+        <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Dokumentasi Kegiatan</h2>
+        <p class="text-gray-500 font-medium max-w-xl mx-auto">Potret aksi dan aktivitas lapangan tim Rescue LPM Banjarbaru.</p>
+        <div class="w-16 h-1.5 bg-[#d4a017] rounded-full mx-auto mt-4"></div>
+    </div>
 
-            <div class="relative overflow-hidden group">
-                <div class="flex gap-4 animate-galeri group-hover:[animation-play-state:paused]">
-                    
-                    @forelse ($armada as $img)
-                        <div class="min-w-[250px] h-72 rounded-2xl overflow-hidden shadow-md relative bg-white">
-                            <img src="{{ asset('uploads/galeri/' . $img->foto) }}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
-                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
-                                    <p class="text-white text-sm font-bold truncate">{{ $img->judul }}</p>
-                                </div>
-                        </div>
-                    @empty
-                        <div class="w-full text-center py-10">
-                            <p class="text-gray-500 italic">Data dokumentasi belum tersedia.</p>
-                        </div>
-                    @endforelse
-
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+        @forelse($dokumentasi as $dok)
+            <div class="group relative overflow-hidden rounded-2xl md:rounded-[32px] shadow-sm aspect-square fade-up reveal">
+                <img src="{{ asset($dok->foto) }}" alt="{{ $dok->judul }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                    <p class="text-white font-bold text-sm md:text-lg">{{ $dok->judul }}</p>
+                    <p class="text-[#d4a017] font-extrabold text-[10px] mt-1 uppercase">{{ $dok->created_at->format('d M Y') }}</p>
                 </div>
             </div>
-        </div>
-    </section>
+        @empty
+            <div class="col-span-2 md:col-span-3 text-center py-12 border-2 border-dashed border-gray-300 rounded-[32px]">
+                <p class="text-gray-400 font-medium text-sm">Dokumentasi belum tersedia. Silakan unggah lewat CMS Admin.</p>
+            </div>
+        @endforelse
+    </div>
+</section>
 
     <section id="lokasi" class="bg-gray-50 scroll-mt-24">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 py-16">

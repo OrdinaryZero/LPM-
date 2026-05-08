@@ -56,8 +56,8 @@
             <form action="{{ route('admin.login.submit') }}" method="POST" class="space-y-6">
                 @csrf
                 <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-2">Username Administrator</label>
-                    <input type="text" name="username" required class="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-[#d4a017] focus:border-[#d4a017] outline-none transition-all shadow-sm" placeholder="Masukkan username">
+                    <label class="block text-sm font-bold text-gray-700 mb-2">Email Administrator</label>
+                    <input type="email" name="email" required class="w-full px-5 py-4 rounded-xl border border-gray-200 bg-white focus:ring-2 focus:ring-[#d4a017] focus:border-[#d4a017] outline-none transition-all shadow-sm" placeholder="Masukkan email">
                 </div>
                 <div>
                     <label class="block text-sm font-bold text-gray-700 mb-2">Password Akses</label>
@@ -65,9 +65,16 @@
                 </div>
                 
                 <button type="submit" class="w-full bg-gradient-to-r from-[#c09015] to-[#d4a017] hover:from-[#d4a017] hover:to-[#fcd34d] text-white font-extrabold py-4 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 text-sm uppercase tracking-widest mt-4">
-                    Otorisasi Masuk
+                    Login 
                 </button>
             </form>
+
+            <div class="flex items-center mb-4">
+                <input type="checkbox" name="remember" id="remember" class="w-4 h-4 text-[#d4a017] border-gray-300 rounded focus:ring-[#d4a017]">
+                <label for="remember" class="ml-2 text-sm font-bold text-gray-600 cursor-pointer">
+                    Ingat Saya (Tetap Login)
+                </label>
+            </div>
 
             <p class="text-center text-xs text-gray-400 font-medium mt-10">
                 Sistem Informasi LPM Banjarbaru © 2026<br>

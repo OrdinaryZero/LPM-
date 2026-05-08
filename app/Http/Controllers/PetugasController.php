@@ -8,10 +8,11 @@ use Illuminate\Support\Facades\Storage;
 
 class PetugasController extends Controller
 {
+    
 
     public function index()
     {
-        if (!session('is_admin')) return redirect()->route('admin.login');
+        if (!\Illuminate\Support\Facades\Auth::check()) return redirect()->route('admin.login');
         
 
         $tim_inti = Petugas::where('kategori_petugas', 'Pengurus')->latest()->get();

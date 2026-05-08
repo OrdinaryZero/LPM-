@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\File;
 
 class GaleriController extends Controller
 {
+    
     public function index()
     {
-        if (!session('is_admin')) return redirect()->route('admin.login');
+        if (!\Illuminate\Support\Facades\Auth::check()) return redirect()->route('admin.login');
         
         $galeri = Galeri::latest()->get();
         return view('admin.galeri', compact('galeri'));
