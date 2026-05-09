@@ -10,15 +10,7 @@
 </head>
 <body class="bg-gray-50 min-h-screen">
 
-    <header class="bg-[#1f2328] text-white py-4 px-8 shadow-md flex justify-between items-center">
-        <div class="flex items-center gap-4">
-            <img src="{{ asset('images/logort.png') }}" alt="Logo" class="h-8">
-            <h1 class="font-bold text-lg border-l border-gray-600 pl-4">Manajemen Struktur Komando</h1>
-        </div>
-        <a href="{{ route('admin.dashboard') }}" class="text-sm font-bold text-gray-300 hover:text-white bg-white/10 px-4 py-2 rounded-lg transition-colors">
-            &larr; Kembali ke Dashboard
-        </a>
-    </header>
+  
 
     <main class="max-w-7xl mx-auto p-8">
         <div class="mb-8">

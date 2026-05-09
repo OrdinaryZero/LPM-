@@ -75,7 +75,7 @@ class ReportController extends Controller
              . "- *Nomer Pelapor:* {$request->hp}\n" 
              . "- *Jenis Kejadian:* {$request->jenis}\n"
              . "- *Keterangan:* {$request->deskripsi}\n\n"
-             . "📍 *Lokasi:* {$request->lokasi}\n"
+             . "> 📍 *Lokasi:* {$request->lokasi}\n"
              . "🗺️ *Google maps:* {$request->link_gps}\n\n";
 
     // 4. Eksekusi Fonnte

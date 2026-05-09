@@ -13,6 +13,8 @@ class AdminRescueController extends Controller
         // Mengambil semua laporan, diurutkan dari yang paling baru
         $rescues = Rescue::latest()->get();
         return view('admin.rescue.index', compact('rescues'));
+        return redirect()->route('admin.dashboard');
+
     }
 
     // Mengupdate status dan upload foto penanganan

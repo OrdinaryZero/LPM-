@@ -8,6 +8,8 @@ use App\Models\Ambulance;
 use App\Models\Rescue; // Pastikan model Rescue dipanggil
 use App\Models\Petugas;
 use Carbon\Carbon;
+use App\Models\Aspirasi;
+
 
 class AdminAuthController extends Controller
 {
@@ -38,30 +40,50 @@ class AdminAuthController extends Controller
         return redirect()->back()->with('error', 'Akses Ditolak: Email atau Password salah!');
     }
 
-    public function dashboard()
+    public function dashboard(\Illuminate\Http\Request $request)
     {
-        if (!Auth::check()) return redirect()->route('admin.login');
-
-        // Statistik Hari Ini (Gabungan Ambulance & Rescue)
-        $hariIniAmbulance = Ambulance::whereDate('created_at', Carbon::today())->count();
-        $hariIniRescue = Rescue::whereDate('created_at', Carbon::today())->count();
+        // 1. Ambil data statistik kotak atas
+        $hariIniAmbulance = \App\Models\Ambulance::whereDate('created_at', \Carbon\Carbon::today())->count();
+        $hariIniRescue = \App\Models\Rescue::whereDate('created_at', \Carbon\Carbon::today())->count();
         $totalLaporanHariIni = $hariIniAmbulance + $hariIniRescue;
 
-        // Statistik Total
-        $totalAmbulance = Ambulance::count(); 
-        $totalRescue = Rescue::count(); // Pakai model Rescue yang kita buat tadi
+        $totalAmbulance = \App\Models\Ambulance::count(); 
+        $totalRescue = \App\Models\Rescue::count();
 
-        $petugas_aktif = Petugas::where('kategori_petugas', 'Lapangan')
+        // 2. Ambil data petugas siaga (Tetap dibiarkan jaga-jaga kalau dibutuhkan)
+        $petugas_aktif = \App\Models\Petugas::where('kategori_petugas', 'Lapangan')
                                 ->where('status_jaga', 'Aktif')
                                 ->get();
 
-        $jadwal_petugas = Petugas::where('kategori_petugas', 'Lapangan')
+        $jadwal_petugas = \App\Models\Petugas::where('kategori_petugas', 'Lapangan')
                                  ->orderBy('status_jaga', 'asc')
                                  ->get();
 
+        // 3. AMBIL DATA UNTUK GRAFIK (CHART.JS)
+        $laporanPerBulan = \App\Models\Rescue::selectRaw('MONTH(created_at) as bulan, COUNT(*) as jumlah')
+            ->whereYear('created_at', date('Y'))
+            ->groupBy('bulan')
+            ->orderBy('bulan')
+            ->pluck('jumlah', 'bulan')->all();
+
+        $dataGrafik = [];
+        for ($i = 1; $i <= 12; $i++) {
+            $dataGrafik[] = $laporanPerBulan[$i] ?? 0;
+        }
+
+        // ==========================================
+        // 4. LOGIKA PEMISAH HALAMAN (PENTING)
+        // ==========================================
+        if ($request->ajax()) {
+            // Jika diklik lewat Sidebar, kirim bagian tengahnya saja
+            return view('admin.partials.dashboard_main', compact(
+                'totalLaporanHariIni', 'totalAmbulance', 'totalRescue', 'dataGrafik'
+            ));
+        }
+
+        // Jika Refresh biasa, muat semua (Cangkang + Tengah)
         return view('admin.dashboard', compact(
-            'totalLaporanHariIni', 'totalAmbulance', 'totalRescue', 
-            'petugas_aktif', 'jadwal_petugas'
+            'totalLaporanHariIni', 'totalAmbulance', 'totalRescue', 'petugas_aktif', 'jadwal_petugas', 'dataGrafik'
         ));
     }
 

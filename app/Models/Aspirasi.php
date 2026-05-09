@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Aspirasi extends Model
 {
     use HasFactory;
-    protected $fillable = ['nama', 'no_hp', 'kategori', 'pesan', 'status'];
-}
+protected $fillable = [
+        'nama', 
+        'no_hp', 
+        'kategori', // Jika di database nama kolomnya 'judul', ganti jadi 'judul'
+        'pesan', 
+        'status'
+    ];}

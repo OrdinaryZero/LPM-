@@ -9,10 +9,17 @@ class UsulanController extends Controller
 {
     // ================= BAGIAN WARGA (PUBLIK) ================= //
     
-    public function index()
-    {
-        return view('usulan'); 
+    public function index(\Illuminate\Http\Request $request) 
+{
+    $usulan = \App\Models\Usulan::latest()->get(); // Sesuaikan dengan modelmu
+
+    if ($request->ajax()) { 
+        // PASTIKAN NAMA FOLDER DAN FILE BENAR: admin/usulan/partial.blade.php
+        return view('admin.usulan.partial', compact('usulan'));
     }
+
+    return redirect()->route('admin.dashboard');
+}
 
     public function store(Request $request)
     {

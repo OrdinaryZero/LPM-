@@ -19,6 +19,8 @@ class PetugasController extends Controller
         $petugas_lapangan = Petugas::where('kategori_petugas', 'Lapangan')->latest()->get();
         
         return view('admin.petugas', compact('tim_inti', 'petugas_lapangan'));
+
+        
     }
 
 

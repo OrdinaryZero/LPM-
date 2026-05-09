@@ -53,9 +53,9 @@ Route::get('/surat', [SuratController::class, 'index'])->name('surat.index');
 Route::post('/surat/store', [SuratController::class, 'store'])->name('surat.store');
 
 // Aspirasi & Usulan
-Route::get('/aspirasi', [AspirasiController::class, 'index'])->name('aspirasi.index');
+Route::get('/aspirasi', function () { return view('aspirasi'); })->name('aspirasi.index');
 Route::post('/aspirasi/kirim', [AspirasiController::class, 'store'])->name('aspirasi.store');
-Route::get('/usulan', [UsulanController::class, 'index'])->name('usulan.index');
+Route::get('/usulan', function () { return view('usulan'); })->name('usulan.index');
 Route::post('/usulan/kirim', [UsulanController::class, 'store'])->name('usulan.store');
 
 // Form Lapor Umum
@@ -76,7 +76,7 @@ Route::get('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin
 
 /*
 |--------------------------------------------------------------------------
-| 4. AREA ADMIN PANEL (DILINDUNGI BENTENG AUTH)
+| 4. AREA ADMIN PANEL 
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth'])->group(function () {
@@ -84,14 +84,14 @@ Route::middleware(['auth'])->group(function () {
     // Main Dashboard
     Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
 
-    // Manajemen Laporan Rescue (SUDAH AMAN)
+    // Manajemen Laporan Rescue 
     Route::get('/admin/rescue', [AdminRescueController::class, 'index'])->name('admin.rescue.index');
     Route::put('/admin/rescue/{id}', [AdminRescueController::class, 'update'])->name('admin.rescue.update');
 
     // Manajemen Aspirasi & Usulan
-    Route::get('/admin/aspirasi', [AspirasiController::class, 'adminIndex'])->name('admin.aspirasi.index');
+    Route::get('/admin/aspirasi', [AspirasiController::class, 'index'])->name('admin.aspirasi.index');
     Route::post('/admin/aspirasi/{id}/status', [AspirasiController::class, 'updateStatus'])->name('admin.aspirasi.status');
-    Route::get('/admin/usulan', [UsulanController::class, 'adminIndex'])->name('admin.usulan.index');
+    Route::get('/admin/usulan', [UsulanController::class, 'index'])->name('admin.usulan.index');
     Route::post('/admin/usulan/{id}/status', [UsulanController::class, 'updateStatus'])->name('admin.usulan.status');
 
     // Manajemen Agenda & Galeri

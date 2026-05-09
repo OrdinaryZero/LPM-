@@ -9,6 +9,7 @@ use App\Models\Struktur;
 use Illuminate\Support\Facades\Auth; 
 use App\Models\Rescue;
 
+
 class BerandaController extends Controller
 {
     public function index()
