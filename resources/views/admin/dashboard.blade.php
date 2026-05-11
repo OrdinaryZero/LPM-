@@ -93,6 +93,7 @@
         <!-- WADAH KONTEN YANG AKAN BERGANTI-GANTI -->
         <div class="flex-1 overflow-y-auto p-8" id="panel-konten">
             @include('admin.partials.dashboard_main')
+            
         </div>
 
     </main>
@@ -131,7 +132,7 @@
 
     // 2. Fungsi Utama Pemindah Panel
     function pindahPanel(event, url) {
-        event.preventDefault(); // Cegah refresh halaman
+        event.preventDefault(); 
         
         const panel = document.getElementById('panel-konten');
         const loading = document.getElementById('loading-indicator');
@@ -144,20 +145,25 @@
         })
         .then(response => response.text())
         .then(html => {
-            // Masukkan HTML baru ke dalam panel
+            
             panel.innerHTML = html;
             panel.style.opacity = '1';
             loading.classList.add('hidden');
             window.history.pushState({}, '', url);
 
-            // ==========================================
-            // KUNCI JAWABANNYA ADA DI SINI:
-            // Setelah HTML disuntikkan, paksa fungsi renderGrafik jalan!
-            // ==========================================
+            
             if (html.includes('id="chartLaporan"')) {
-                // Beri jeda sepersekian detik memastikan DOM (canvas) sudah "nempel" di browser
+               
                 setTimeout(renderGrafik, 100); 
             }
+
+            const scripts = panel.querySelectorAll('script');
+            scripts.forEach(oldScript => {
+                const newScript = document.createElement('script');
+                Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
+                newScript.appendChild(document.createTextNode(oldScript.innerHTML));
+                oldScript.parentNode.replaceChild(newScript, oldScript);
+            });
         })
         .catch(err => {
             console.log("Error loading panel:", err);
@@ -168,8 +174,7 @@
 
     // 3. Jalankan render grafiknya untuk pertama kali saat halaman di-refresh (F5)
     document.addEventListener('DOMContentLoaded', function() {
-        // Simpan data dari Laravel ke variabel global (JavaScript)
-        // (Pastikan variabel $dataGrafik ini dikirim dari controller AdminAuthController@dashboard)
+        
         window.dataGrafikGlobal = @json($dataGrafik ?? []);
         
         renderGrafik();

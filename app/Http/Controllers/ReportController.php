@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Rescue;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str; // Wajib ditambah untuk generate kode random
+use Illuminate\Support\Str; 
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class ReportController extends Controller
 {
@@ -131,4 +132,38 @@ class ReportController extends Controller
             return redirect()->route('status')->with('error', 'Kode Laporan tidak ditemukan. Pastikan huruf besar/kecilnya sesuai.');
         }
     }
+    // PDF Generator
+    
+
+        public function cetakPDF()
+{
+    // 1. Ambil Data Aspirasi & Rescue
+    $aspirasiMasuk = \App\Models\Aspirasi::latest()->get();
+    $rescueMasuk = \App\Models\Rescue::latest()->get();
+
+    // 2. Hitung Statistik untuk "Grafik" (Manual)
+    $stats = [
+        'total_rescue' => $rescueMasuk->count(),
+        'rescue_selesai' => $rescueMasuk->where('status', 'Selesai')->count(),
+        'rescue_proses' => $rescueMasuk->where('status', 'Proses')->count(),
+        'total_aspirasi' => $aspirasiMasuk->count(),
+        'aspirasi_dibalas' => $aspirasiMasuk->where('status', 'Dibalas')->count(),
+    ];
+
+    // 3. Data Pendukung
+    $data = [
+        'aspirasi' => $aspirasiMasuk,
+        'rescue' => $rescueMasuk,
+        'stats' => $stats,
+        'tanggal' => date('d F Y H:i'),
+        'admin' => 'Aditya Febrian' // Nama kamu
+    ];
+
+    $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('admin.laporan.template_pdf', $data);
+    
+    // Set ukuran kertas A4
+    $pdf->setPaper('a4', 'portrait');
+
+    return $pdf->download('Laporan_Bulanan_LPM_Banjarbaru.pdf');
+}
 }

@@ -32,5 +32,8 @@
 <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 mb-8">
     <h3 class="font-bold text-gray-800 mb-4">Tren Laporan Darurat {{ date('Y') }}</h3>
     <canvas id="chartLaporan" height="100"></canvas>
+    
 </div>
-
+<a href="{{ route('admin.laporan.cetak') }}" class="bg-[#d4a017] text-white px-4 py-2 rounded-xl font-bold">
+            Cetak Laporan PDF
+        </a>

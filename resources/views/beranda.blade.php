@@ -150,7 +150,7 @@
             <div class="mb-6 fade-up reveal opacity-0 translate-y-8 transition-all duration-1000">
                 <img src="{{ asset('images/logort.png') }}" alt="Logo Instansi" class="w-20 md:w-40 h-auto drop-shadow-xl mb-6 hover:scale-105 transition-transform duration-300">
                 <h2 class="text-white/90 text-xs md:text-sm font-semibold mb-2 tracking-widest uppercase drop-shadow-sm">Mitra Pemerintah Kota, Pelindung Masyarakat</h2>
-                <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow-md">Pusat Komando <br> LPM Banjarbaru</h1>
+                <h1 class="text-white text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow-md">Kantor Sekretariat <br> LPM Banjarbaru</h1>
                 <p class="text-white/90 mt-5 max-w-md text-[14px] md:text-base leading-relaxed drop-shadow-sm font-medium">Sistem tanggap darurat, pelayanan sosial, dan pemberdayaan masyarakat. Bersama kita wujudkan kota yang responsif, aman, dan siaga.</p>
 
                 <div class="mt-8 flex gap-4">
@@ -187,7 +187,8 @@
             </h3>
 
             <p class="text-sm md:text-base font-medium text-red-100 leading-snug">
-                Layanan terpadu evakuasi medis (Ambulance), rescue, dan pelaporan insiden 24 Jam.
+                Layanan terpadu Pengantaran jenazah , evakuasi medis, dan pelaporan insiden 24 Jam.
+                TANPA DIPUNGUT BIAYA (GRATIS)
             </p>
         </div>
 
@@ -298,7 +299,7 @@
         
         <div class="max-w-7xl mx-auto px-8 mb-10 text-center fade-up reveal">
             <span class="text-[#d4a017] font-extrabold text-sm uppercase tracking-widest mb-2 block">Tim Inti</span>
-            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Struktur Komando LPM</h2>
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Struktur Organisasi LPM</h2>
             <div class="w-16 h-1.5 bg-[#d4a017] mx-auto rounded-full"></div>
             <p class="text-gray-500 font-medium mt-4">Pilar penggerak layanan masyarakat Banjarbaru</p>
         </div>

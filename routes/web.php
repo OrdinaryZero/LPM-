@@ -39,7 +39,9 @@ Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
 
 // Layanan Rescue & Emergency
 Route::get('/lapor-rescue', [ReportController::class, 'index'])->name('rescue.index');
-Route::post('/lapor-rescue', [ReportController::class, 'store'])->middleware('throttle:3,60')->name('rescue.store');
+Route::post('/lapor-rescue', [ReportController::class, 'store'])->name('rescue.store');
+
+//  ->middleware('throttle:3,60') taro di sebelah ->namespace kaloo udah testing
 
 // Tracking Status Laporan (Sistem Tiket)
 Route::get('/status', [ReportController::class, 'statusIndex'])->name('status');
@@ -83,6 +85,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Main Dashboard
     Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
+
+    //pdf maker line 
+
+    Route::get('/admin/laporan/cetak', [App\Http\Controllers\ReportController::class, 'cetakPDF'])->name('admin.laporan.cetak');
 
     // Manajemen Laporan Rescue 
     Route::get('/admin/rescue', [AdminRescueController::class, 'index'])->name('admin.rescue.index');
@@ -130,5 +136,8 @@ Route::middleware(['auth'])->group(function () {
         $laporan->save();
         return redirect()->back()->with('success', 'Status laporan berhasil diperbarui!');
     })->name('admin.logs.status');
+
+
+    
 
 });

@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 namespace App\Http\Controllers;
 
@@ -42,7 +42,7 @@ class SuratController extends Controller
                  . "👤 Pemohon: {$request->nama}\n"
                  . "📞 HP: {$request->hp}\n\n"
                  . "📍 *ALAMAT JEMPUT:*\n{$request->lokasi}\n\n"
-                 . "🗺️ *LINK GOOGLE MAPS:*\n{$request->link_gps}"; 
+                 . "🗺️ *LINK GOOGLE MAPS:*\n{$request->link_gps}";
 
         $payloadFonnte = [
             'target' => env('NO_WA_ADMIN'),
@@ -62,4 +62,4 @@ class SuratController extends Controller
 
         return redirect()->back()->with('success', 'Ambulance segera menuju lokasi Anda!');
     }
-}
+} 

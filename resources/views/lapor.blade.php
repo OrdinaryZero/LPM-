@@ -102,6 +102,17 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 
 <form action="{{ route('rescue.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
+    @if ($errors->any())
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
+        <strong>Terjadi Kesalahan:</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>- {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     @csrf
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
