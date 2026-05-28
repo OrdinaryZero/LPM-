@@ -14,8 +14,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        // 👈 2. Tambahkan pelindung ini
-        // Jika aplikasi berjalan di server (production), paksa pakai HTTPS
+
         if (config('app.env') === 'production') {
             URL::forceScheme('https');
         }

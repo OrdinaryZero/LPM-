@@ -16,6 +16,7 @@ use App\Http\Controllers\UsulanController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\StrukturController;
 use App\Http\Controllers\AdminRescueController;
+use App\Http\Controllers\BeritaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,9 +40,8 @@ Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
 
 // Layanan Rescue & Emergency
 Route::get('/lapor-rescue', [ReportController::class, 'index'])->name('rescue.index');
-Route::post('/lapor-rescue', [ReportController::class, 'store'])->name('rescue.store');
-
-//  ->middleware('throttle:3,60') taro di sebelah ->namespace kaloo udah testing
+// UNTUK RILIS PUBLIK: Hapus tanda // di bawah ini untuk mengaktifkan pelindung anti-spam
+Route::post('/lapor-rescue', [ReportController::class, 'store'])/* ->middleware('throttle:5,1') */->name('rescue.store');
 
 // Tracking Status Laporan (Sistem Tiket)
 Route::get('/status', [ReportController::class, 'statusIndex'])->name('status');
@@ -56,15 +56,21 @@ Route::post('/surat/store', [SuratController::class, 'store'])->name('surat.stor
 
 // Aspirasi & Usulan
 Route::get('/aspirasi', function () { return view('aspirasi'); })->name('aspirasi.index');
-Route::post('/aspirasi/kirim', [AspirasiController::class, 'store'])->name('aspirasi.store');
+// UNTUK RILIS PUBLIK: Hapus tanda // di bawah ini 
+Route::post('/aspirasi/kirim', [AspirasiController::class, 'store'])/* ->middleware('throttle:10,1') */->name('aspirasi.store');
+
 Route::get('/usulan', function () { return view('usulan'); })->name('usulan.index');
-Route::post('/usulan/kirim', [UsulanController::class, 'store'])->name('usulan.store');
+// UNTUK RILIS PUBLIK: Hapus tanda // di bawah ini
+Route::post('/usulan/kirim', [UsulanController::class, 'store'])/* ->middleware('throttle:10,1') */->name('usulan.store');
 
 // Form Lapor Umum
 Route::get('/form-lapor', [ReportController::class, 'index'])->name('lapor.index');
 Route::post('/form-lapor', [ReportController::class, 'store'])->name('lapor.store');
 Route::get('/lapor', function () { return view('lapor'); })->name('lapor.index');
 
+// berita
+Route::get('/berita', [BeritaController::class, 'publicIndex'])->name('berita.index');
+Route::get('/berita/{slug}', [BeritaController::class, 'show'])->name('berita.show');
 
 /*
 |--------------------------------------------------------------------------
@@ -86,8 +92,7 @@ Route::middleware(['auth'])->group(function () {
     // Main Dashboard
     Route::get('/admin/dashboard', [AdminAuthController::class, 'dashboard'])->name('admin.dashboard');
 
-    //pdf maker line 
-
+    // PDF Maker
     Route::get('/admin/laporan/cetak', [App\Http\Controllers\ReportController::class, 'cetakPDF'])->name('admin.laporan.cetak');
 
     // Manajemen Laporan Rescue 
@@ -124,6 +129,11 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/struktur/reorder', [StrukturController::class, 'reorder'])->name('admin.struktur.reorder');
     });
 
+    // Manajemen Berita
+    Route::get('/admin/berita', [BeritaController::class, 'index'])->name('admin.berita');
+    Route::post('/admin/berita', [BeritaController::class, 'store'])->name('admin.berita.store');
+    Route::delete('/admin/berita/{id}', [BeritaController::class, 'destroy'])->name('admin.berita.destroy');
+
     // Logs & Riwayat Ambulance
     Route::get('/admin/logs', function () {
         $logs = \App\Models\Ambulance::latest()->paginate(10); 
@@ -136,8 +146,5 @@ Route::middleware(['auth'])->group(function () {
         $laporan->save();
         return redirect()->back()->with('success', 'Status laporan berhasil diperbarui!');
     })->name('admin.logs.status');
-
-
-    
 
 });

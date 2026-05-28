@@ -304,7 +304,7 @@
             <p class="text-gray-500 font-medium mt-4">Pilar penggerak layanan masyarakat Banjarbaru</p>
         </div>
 
-        <div class="relative w-full overflow-hidden fade-up reveal delay-100">
+        <div id="wrapper-struktur" class="relative w-full overflow-hidden max-h-[400px] transition-all duration-700 ease-in-out fade-up reveal delay-100">
             <div class="absolute inset-y-0 left-0 w-16 md:w-32 bg-gradient-to-r from-gray-50 to-transparent z-10 pointer-events-none"></div>
             <div class="absolute inset-y-0 right-0 w-16 md:w-32 bg-gradient-to-l from-gray-50 to-transparent z-10 pointer-events-none"></div>
 
@@ -334,9 +334,17 @@
                     
                 </div>
             @endforeach
+            
+            <div id="fade-struktur" class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-gray-50 to-transparent z-20 pointer-events-none transition-opacity duration-500"></div>
+        </div>
+
+        <div class="flex justify-center mt-8 relative z-30 fade-up reveal delay-200">
+            <button id="btn-toggle-struktur" onclick="toggleStruktur()" class="flex items-center gap-2 px-8 py-3 bg-white border-2 border-gray-200 text-gray-700 hover:text-[#d4a017] hover:border-[#d4a017] rounded-full shadow-md font-bold text-sm transition-all duration-300 group">
+                <span id="text-toggle-struktur">Lihat Seluruh Pengurus</span>
+                <svg id="icon-toggle-struktur" class="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
         </div>
     </section>
-
     <section id="informasi" class="max-w-7xl mx-auto px-6 lg:px-12 py-16 scroll-mt-24">
         <div class="text-center mb-12 fade-up reveal">
             <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Informasi Operasional Siaga</h2>
@@ -369,49 +377,41 @@
     </section>
 
     <section class="max-w-7xl mx-auto px-6 lg:px-12 py-16 bg-white overflow-hidden">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 fade-up reveal">
-            <div>
-                <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Laporan Kegiatan</h2>
-                <div class="w-16 h-1.5 bg-[#d4a017] rounded-full"></div>
-            </div>
-            <a href="#" class="text-[#d4a017] font-bold underline hover:text-black transition-colors mt-4 md:mt-0">Lihat semua publikasi</a>
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 fade-up reveal">
+        <div>
+            <h2 class="text-3xl font-extrabold text-gray-900 mb-2">Laporan Kegiatan</h2>
+            <div class="w-16 h-1.5 bg-[#d4a017] rounded-full"></div>
         </div>
+        <a href="{{ route('berita.index') }}" class="text-[#d4a017] font-bold underline hover:text-black transition-colors mt-4 md:mt-0">Lihat semua publikasi</a>
+    </div>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            <div class="lg:col-span-2 group cursor-pointer fade-up reveal">
-                <div class="overflow-hidden rounded-[30px] shadow-sm mb-6">
-                    <img src="{{ asset('images/berita5.JPG') }}" alt="Giat Utama" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
-                </div>
-                <div class="flex items-center gap-3 text-sm font-bold text-[#d4a017] mb-3 uppercase tracking-widest">
-                    <span>Kerjasama Mahasiswa</span> <span class="text-gray-300">•</span> <span class="text-gray-500">10 April 2026</span>
-                </div>
-                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight group-hover:text-[#d4a017] transition-colors">Temu Koordinasi Pembuatan Website LPM Banjarbaru dengan mahasiswa UIN Antasari Banjarmasin</h3>
+    @if($beritaUtama)
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <a href="{{ route('berita.show', $beritaUtama->slug) }}" class="lg:col-span-2 group cursor-pointer fade-up reveal block">
+            <div class="overflow-hidden rounded-[30px] shadow-sm mb-6">
+                <img src="{{ asset($beritaUtama->foto) }}" alt="Giat Utama" class="w-full h-[400px] object-cover group-hover:scale-105 transition-transform duration-700">
             </div>
+            <div class="flex items-center gap-3 text-sm font-bold text-[#d4a017] mb-3 uppercase tracking-widest">
+                <span>{{ $beritaUtama->kategori }}</span> <span class="text-gray-300">•</span> <span class="text-gray-500">{{ \Carbon\Carbon::parse($beritaUtama->tanggal)->format('d F Y') }}</span>
+            </div>
+            <h3 class="text-2xl md:text-3xl font-bold text-gray-900 leading-tight group-hover:text-[#d4a017] transition-colors">{{ $beritaUtama->judul }}</h3>
+        </a>
 
-            <div class="flex flex-col gap-8">
-                <div class="flex gap-5 group cursor-pointer fade-up reveal">
-                    <img src="{{ asset('images/berita2.jpg') }}" class="w-28 h-28 rounded-2xl object-cover shadow-sm">
-                    <div class="flex flex-col justify-center">
-                        <p class="text-[11px] font-bold text-[#d4a017] uppercase mb-1">Koordinasi</p>
-                        <h4 class="font-bold text-gray-800 leading-snug group-hover:text-[#d4a017] transition-colors">Tim LPM berkoordinasi dengan BPBD Banjarbaru</h4>
-                    </div>
+        <div class="flex flex-col gap-8">
+            @foreach($beritaLainnya as $berita)
+            <a href="{{ route('berita.show', $berita->slug) }}" class="flex gap-5 group cursor-pointer fade-up reveal block">
+                <img src="{{ asset($berita->foto) }}" class="w-28 h-28 rounded-2xl object-cover shadow-sm">
+                <div class="flex flex-col justify-center">
+                    <p class="text-[11px] font-bold text-[#d4a017] uppercase mb-1">{{ $berita->kategori }}</p>
+                    <h4 class="font-bold text-gray-800 leading-snug group-hover:text-[#d4a017] transition-colors">{{ $berita->judul }}</h4>
                 </div>
-                <div class="flex gap-5 group cursor-pointer fade-up reveal">
-                    <img src="{{ asset('images/berita3.jpg') }}" class="w-28 h-28 rounded-2xl object-cover shadow-sm">
-                    <div class="flex flex-col justify-center">
-                        <p class="text-[11px] font-bold text-[#d4a017] uppercase mb-1">Bakti Sosial</p>
-                        <h4 class="font-bold text-gray-800 leading-snug group-hover:text-[#d4a017] transition-colors">Distribusi Bantuan Sosial ke Wilayah Rawan Bencana</h4>
-                    </div>
-                </div>
-                <div class="flex gap-5 group cursor-pointer fade-up reveal">
-                    <img src="{{ asset('images/berita4.jpeg') }}" class="w-28 h-28 rounded-2xl object-cover shadow-sm">
-                    <div class="flex flex-col justify-center">
-                        <p class="text-[11px] font-bold text-[#d4a017] uppercase mb-1">Sosialisasi</p>
-                        <h4 class="font-bold text-gray-800 leading-snug group-hover:text-[#d4a017] transition-colors">Sosialisasi Mitigasi Bencana bersama Dosen UIN Antasari</h4>
-                    </div>
-                </div>
-            </div>
+            </a>
+            @endforeach
         </div>
+    </div>
+    @else
+        <p class="text-center text-gray-500">Belum ada publikasi berita.</p>
+    @endif
     </section>
 
     <section id="dokumentasi" class="max-w-7xl mx-auto px-6 lg:px-12 py-20 bg-gray-50 rounded-[40px] mb-20">
@@ -579,6 +579,42 @@
         btn.addEventListener("click", () => {
             menu.classList.toggle("hidden");
         });
+    </script>
+
+    <script>
+        function toggleStruktur() {
+            const wrapper = document.getElementById('wrapper-struktur');
+            const fade = document.getElementById('fade-struktur');
+            const btnText = document.getElementById('text-toggle-struktur');
+            const btnIcon = document.getElementById('icon-toggle-struktur');
+
+            // Cek apakah pembungkus sedang dalam mode Sembunyi
+            if (wrapper.classList.contains('max-h-[400px]')) {
+                // EXPAND: Buka tinggi kotak sampai 2500px (agar cukup untuk 5 baris)
+                wrapper.classList.remove('max-h-[400px]');
+                wrapper.classList.add('max-h-[2500px]'); 
+                
+                // Hilangkan gradasi putih
+                fade.classList.add('opacity-0'); 
+                
+                // Ubah Teks & Putar Ikon Panah ke atas
+                btnText.innerText = "Sembunyikan Struktur";
+                btnIcon.classList.remove('group-hover:translate-y-1');
+                btnIcon.classList.add('rotate-180', 'group-hover:-translate-y-1');
+            } else {
+                // COLLAPSE: Tutup kembali kotaknya ke ukuran awal
+                wrapper.classList.add('max-h-[400px]');
+                wrapper.classList.remove('max-h-[2500px]');
+                
+                // Munculkan gradasi putih
+                fade.classList.remove('opacity-0'); 
+                
+                // Ubah Teks & Putar Ikon Panah kembali ke bawah
+                btnText.innerText = "Lihat Seluruh Pengurus";
+                btnIcon.classList.add('group-hover:translate-y-1');
+                btnIcon.classList.remove('rotate-180', 'group-hover:-translate-y-1');
+            }
+        }
     </script>
 </body>
 </html>

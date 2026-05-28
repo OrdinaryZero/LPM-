@@ -7,6 +7,7 @@ use App\Models\Rescue;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str; 
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Cache;
 
 class ReportController extends Controller
 {
@@ -55,6 +56,7 @@ class ReportController extends Controller
         'deskripsi' => $request->deskripsi,
         'foto_kejadian' => $path,
     ]);
+    Cache::forget('statistik_rescue_publik');
 
 
     $kategoriDarurat = ['Kecelakaan Lalu Lintas', 'Kebakaran', 'Pohon Tumbang', 'Bencana Alam'];
@@ -100,15 +102,25 @@ class ReportController extends Controller
 
     // Menampilkan halaman pencarian status & statistik
     public function statusIndex()
-    {
-        // Menghitung statistik laporan langsung dari database
-        $total = Rescue::count();
-        $selesai = Rescue::where('status', 'Selesai')->count();
-        $diproses = Rescue::where('status', 'Diproses')->count();
-        $menunggu = Rescue::where('status', 'Menunggu')->count();
+{
+    // Caching: Simpan hasil hitungan selama 5 menit (300 detik)
+    $stats = Cache::remember('statistik_rescue_publik', 300, function () {
+        return [
+            'total'    => Rescue::count(),
+            'selesai'  => Rescue::where('status', 'Selesai')->count(),
+            'diproses' => Rescue::where('status', 'Diproses')->count(),
+            'menunggu' => Rescue::where('status', 'Menunggu')->count(),
+        ];
+    });
 
-        return view('status', compact('total', 'selesai', 'diproses', 'menunggu'));
-    }
+    // Lempar data yang sudah di-cache ke halaman view
+    return view('status', [
+        'total'    => $stats['total'],
+        'selesai'  => $stats['selesai'],
+        'diproses' => $stats['diproses'],
+        'menunggu' => $stats['menunggu']
+    ]);
+}
 
     // Memproses pengecekan kode laporan
     public function statusCheck(Request $request)
@@ -117,17 +129,27 @@ class ReportController extends Controller
             'kode' => 'required'
         ]);
 
-        // Tetap hitung statistik agar saat di-refresh halamannya tidak error
-        $total = Rescue::count();
-        $selesai = Rescue::where('status', 'Selesai')->count();
-        $diproses = Rescue::where('status', 'Diproses')->count();
-        $menunggu = Rescue::where('status', 'Menunggu')->count();
+        // KITA UBAH BAGIAN INI AGAR SAMA DENGAN statusIndex()
+        $stats = Cache::remember('statistik_rescue_publik', 300, function () {
+            return [
+                'total'    => Rescue::count(),
+                'selesai'  => Rescue::where('status', 'Selesai')->count(),
+                'diproses' => Rescue::where('status', 'Diproses')->count(),
+                'menunggu' => Rescue::where('status', 'Menunggu')->count(),
+            ];
+        });
 
         // Cari laporan berdasarkan kode
         $laporan = Rescue::where('kode_laporan', $request->kode)->first();
 
         if ($laporan) {
-            return view('status', compact('laporan', 'total', 'selesai', 'diproses', 'menunggu'));
+            return view('status', [
+                'laporan'  => $laporan,
+                'total'    => $stats['total'],
+                'selesai'  => $stats['selesai'],
+                'diproses' => $stats['diproses'],
+                'menunggu' => $stats['menunggu']
+            ]);
         } else {
             return redirect()->route('status')->with('error', 'Kode Laporan tidak ditemukan. Pastikan huruf besar/kecilnya sesuai.');
         }

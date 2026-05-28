@@ -10,8 +10,6 @@
 </head>
 <body class="bg-gray-50 min-h-screen">
 
-  
-
     <main class="max-w-7xl mx-auto p-8">
         <div class="mb-8">
             <h2 class="text-2xl font-extrabold text-gray-800">Manajemen Pengurus Carousel</h2>
@@ -43,9 +41,11 @@
                         <label class="block text-sm font-bold text-gray-700 mb-1">Pilih Baris Tampil</label>
                         <select name="baris" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-[#d4a017] outline-none text-sm font-semibold text-gray-700">
                             <option value="1">Baris 1 (Paling Atas)</option>
-                            <option value="2">Baris 2 (Tengah)</option>
-                            <option value="3">Baris 3 (Bawah)</option>
-                        </select>
+                            <option value="2">Baris 2 (Tengah Atas)</option>
+                            <option value="3">Baris 3 (Tengah)</option>
+                            <option value="4">Baris 4 (Tengah Bawah)</option>
+                            <option value="5">Baris 5 (Paling Bawah)</option>
+                            </select>
                     </div>
 
                     <div>
@@ -158,9 +158,11 @@
                     <label class="block text-sm font-bold text-gray-700 mb-1">Pindah Baris Tampil</label>
                     <select id="edit_baris" name="baris" required class="w-full px-4 py-3 rounded-xl border border-gray-200 bg-gray-50 focus:ring-2 focus:ring-blue-500 outline-none text-sm font-semibold text-gray-700">
                         <option value="1">Baris 1 (Paling Atas)</option>
-                        <option value="2">Baris 2 (Tengah)</option>
-                        <option value="3">Baris 3 (Bawah)</option>
-                    </select>
+                        <option value="2">Baris 2 (Tengah Atas)</option>
+                        <option value="3">Baris 3 (Tengah)</option>
+                        <option value="4">Baris 4 (Tengah Bawah)</option>
+                        <option value="5">Baris 5 (Paling Bawah)</option>
+                        </select>
                 </div>
 
                 <div>
@@ -198,7 +200,6 @@
             document.getElementById('edit_jabatan').value = data.jabatan || '';
             document.getElementById('edit_urutan').value = data.urutan || '1';
             document.getElementById('edit_foto').value = data.foto_nomer || '';
-            // Setel nilai baris di modal
             document.getElementById('edit_baris').value = data.baris || '1';
             
             modal.classList.remove('hidden');

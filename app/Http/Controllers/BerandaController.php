@@ -8,7 +8,7 @@ use App\Models\Galeri;
 use App\Models\Struktur; 
 use Illuminate\Support\Facades\Auth; 
 use App\Models\Rescue;
-
+use App\Models\Berita; 
 
 class BerandaController extends Controller
 {
@@ -19,19 +19,35 @@ class BerandaController extends Controller
         // Mengambil foto Armada
         $armada = Galeri::where('kategori', 'Armada')->latest()->take(6)->get();
         
-        // MENGAMBIL FOTO DOKUMENTASI (BARU)
+        // Mengambil foto Dokumentasi
         $dokumentasi = Galeri::where('kategori', 'Dokumentasi')->latest()->take(6)->get();
 
+        // Mengambil Struktur Organisasi
         $struktursGrouped = Struktur::orderBy('baris', 'asc')->orderBy('urutan', 'asc')->get()->groupBy('baris');
 
+        // Mengambil Laporan Rescue yang sudah selesai
         $laporanSelesai = Rescue::where('status', 'Selesai')
                                 ->whereNotNull('foto_penanganan')
                                 ->latest()
                                 ->take(4)
                                 ->get();
 
-        // Jangan lupa tambahkan 'dokumentasi' ke dalam compact
-        return view('beranda', compact('pengurus', 'armada', 'struktursGrouped', 'laporanSelesai', 'dokumentasi'));
+        // ==========================================
+        // FITUR BARU: MENGAMBIL DATA BERITA/KEGIATAN
+        // ==========================================
+        $beritaUtama = Berita::latest('tanggal')->first();
+        $beritaLainnya = Berita::latest('tanggal')->skip(1)->take(3)->get();
+
+        // Lempar SEMUA data ke tampilan beranda
+        return view('beranda', compact(
+            'pengurus', 
+            'armada', 
+            'struktursGrouped', 
+            'laporanSelesai', 
+            'dokumentasi', 
+            'beritaUtama', 
+            'beritaLainnya' // <-- Variabel baru yang mengatasi error tadi
+        ));
     }
 
     public function liveReport()
