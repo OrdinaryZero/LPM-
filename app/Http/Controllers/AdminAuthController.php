@@ -60,7 +60,7 @@ class AdminAuthController extends Controller
                                  ->get();
 
         // 3. AMBIL DATA UNTUK GRAFIK (CHART.JS)
-        $laporanPerBulan = \App\Models\Rescue::selectRaw('MONTH(created_at) as bulan, COUNT(*) as jumlah')
+        $laporanPerBulan = \App\Models\Rescue::selectRaw('EXTRACT(MONTH FROM created_at) as bulan, COUNT(*) as jumlah')
             ->whereYear('created_at', date('Y'))
             ->groupBy('bulan')
             ->orderBy('bulan')
