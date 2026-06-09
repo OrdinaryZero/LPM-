@@ -10,7 +10,7 @@ class Aspirasi extends Model
 protected $fillable = [
         'nama', 
         'no_hp', 
-        'kategori', // Jika di database nama kolomnya 'judul', ganti jadi 'judul'
+        'kategori',
         'pesan', 
         'status'
     ];}

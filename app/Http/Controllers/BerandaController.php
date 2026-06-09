@@ -46,13 +46,13 @@ class BerandaController extends Controller
             'laporanSelesai', 
             'dokumentasi', 
             'beritaUtama', 
-            'beritaLainnya' // <-- Variabel baru yang mengatasi error tadi
+            'beritaLainnya' 
         ));
     }
 
     public function liveReport()
     {
-        // Gembok keamanan
+        // keamanan
         if (!Auth::check()) return redirect()->route('admin.login');
         
         $totalAmbulance = \App\Models\Ambulance::count();

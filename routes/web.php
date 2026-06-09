@@ -4,7 +4,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-// Import Controllers
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SuratController;
 use App\Http\Controllers\AdminAuthController;
@@ -41,7 +40,7 @@ Route::get('/agenda', [AgendaController::class, 'index'])->name('agenda.index');
 // Layanan Rescue & Emergency
 Route::get('/lapor-rescue', [ReportController::class, 'index'])->name('rescue.index');
 // UNTUK RILIS PUBLIK: Hapus tanda // di bawah ini untuk mengaktifkan pelindung anti-spam
-Route::post('/lapor-rescue', [ReportController::class, 'store'])/* ->middleware('throttle:5,1') */->name('rescue.store');
+Route::post('/lapor-rescue', [ReportController::class, 'store'])->middleware('throttle:5,1')->name('rescue.store');
 
 // Tracking Status Laporan (Sistem Tiket)
 Route::get('/status', [ReportController::class, 'statusIndex'])->name('status');
@@ -57,11 +56,11 @@ Route::post('/surat/store', [SuratController::class, 'store'])->name('surat.stor
 // Aspirasi & Usulan
 Route::get('/aspirasi', function () { return view('aspirasi'); })->name('aspirasi.index');
 // UNTUK RILIS PUBLIK: Hapus tanda // di bawah ini 
-Route::post('/aspirasi/kirim', [AspirasiController::class, 'store'])/* ->middleware('throttle:10,1') */->name('aspirasi.store');
+Route::post('/aspirasi/kirim', [AspirasiController::class, 'store']) ->middleware('throttle:10,1')->name('aspirasi.store');
 
 Route::get('/usulan', function () { return view('usulan'); })->name('usulan.index');
 // UNTUK RILIS PUBLIK: Hapus tanda // di bawah ini
-Route::post('/usulan/kirim', [UsulanController::class, 'store'])/* ->middleware('throttle:10,1') */->name('usulan.store');
+Route::post('/usulan/kirim', [UsulanController::class, 'store'])->middleware('throttle:10,1')->name('usulan.store');
 
 // Form Lapor Umum
 Route::get('/form-lapor', [ReportController::class, 'index'])->name('lapor.index');
